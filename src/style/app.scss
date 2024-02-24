@@ -1,0 +1,43 @@
+@import "src/style/variables.scss";
+body {
+  background-color: $background !important;
+}
+.escape-app-main-wrapper {
+  margin: 0 auto;
+  padding: 0 15px 40px;
+  min-height: 100vh; // Make sure body takes 100% of the viewport height
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $text;
+  position: relative;
+  max-width: 600px;
+
+  .text {
+    max-width: 600px;
+    padding: 20px 15px;
+  }
+  .bike-animation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+  .fade-out {
+    opacity: 0;
+    transition: opacity 5s ease;
+  }
+  .fade-in {
+    animation: fade-in 5s ease;
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}

@@ -1,0 +1,12 @@
+@import "src/style/variables.scss";
+.modal-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  background-color: $light-blue;
+  border: 2px solid $black;
+  box-shadow: 24;
+  padding: 15px;
+}
