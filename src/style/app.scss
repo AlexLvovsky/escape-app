@@ -1,4 +1,5 @@
 @import "src/style/variables.scss";
+@import "~video-react/styles/scss/video-react";
 body {
   background-color: $background !important;
 }
@@ -8,7 +9,7 @@ body {
   min-height: 100vh; // Make sure body takes 100% of the viewport height
 
   display: flex;
-  align-items: center;
+  //align-items: center;
   justify-content: center;
   color: $text;
   position: relative;
@@ -17,6 +18,7 @@ body {
   .text {
     max-width: 600px;
     padding: 20px 15px;
+    text-align: left;
   }
   .bike-animation {
     position: absolute;
@@ -38,6 +40,28 @@ body {
     }
     to {
       opacity: 1;
+    }
+  }
+  .welcome-player-button {
+    margin-top: 100px;
+    button.play {
+      display: none;
+    }
+  }
+  .welcome-start-button {
+    padding-top: 20px;
+  }
+  .players-component-form {
+    padding-top: 150px;
+  }
+  .centered {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .wheel-step {
+    .text {
+      text-align: center;
     }
   }
 }

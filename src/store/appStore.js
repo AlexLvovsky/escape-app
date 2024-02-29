@@ -61,7 +61,7 @@ const initialState = {
     "#49c583",
     "#4bcd82",
   ],
-
+  teemName: null,
   names: [],
   playersObject: {},
   currentStep: steps.welcome,
@@ -78,6 +78,7 @@ const initialState = {
   confetti: false,
   showWheel: true,
   deleteWheel: false,
+  shouldUpdateStep: false,
 };
 
 export const appStore = createSlice({
@@ -90,6 +91,9 @@ export const appStore = createSlice({
     },
     setCount: (state, action) => {
       state.count = action.payload;
+    },
+    setTeemName: (state, action) => {
+      state.teemName = action.payload;
     },
     setCurrentStep: (state, action) => {
       state.currentStep = action.payload;
@@ -148,6 +152,9 @@ export const appStore = createSlice({
     setDeleteWheel: (state, action) => {
       state.deleteWheel = action.payload;
     },
+    setShouldUpdateStep: (state, action) => {
+      state.shouldUpdateStep = action.payload;
+    },
   },
 });
 
@@ -165,6 +172,8 @@ export const {
   setShowWheel,
   setDeleteWheel,
   setShowText,
+  setShouldUpdateStep,
+  setTeemName,
 } = appStore.actions;
 
 export default appStore.reducer;

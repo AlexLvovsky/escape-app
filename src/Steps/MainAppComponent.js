@@ -7,7 +7,7 @@ import WelcomeTextComponent from "./WelcomeTextComponent";
 import WinnerDataComponent from "./WinnerDataComponent";
 import WheelComponent from "./WheelComponent";
 import LoaderLetters from "../Shared/LoaderLetters/LoaderLetters";
-import MediaComponent from "./MediaComponent";
+import SurpriseHerComponent from "./SurpriseHerComponent";
 
 const MainAppComponent = () => {
   const { currentStep, loader } = useSelector((state) => state);
@@ -22,8 +22,8 @@ const MainAppComponent = () => {
         return <WheelComponent />;
       case steps.winner_data:
         return <WinnerDataComponent />;
-      case steps.media:
-        return <MainAppComponent />;
+      case steps.surprise_her:
+        return <SurpriseHerComponent />;
 
       default:
         console.log(`Sorry, we are out of game.`);

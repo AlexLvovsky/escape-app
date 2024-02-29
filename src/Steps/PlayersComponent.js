@@ -7,6 +7,7 @@ import {
   findWinner,
   openModal,
   setError,
+  setTeemName,
 } from "../store/appStore";
 import { TextField, Box } from "@mui/material";
 import { steps } from "../store/enum";
@@ -18,9 +19,8 @@ import bike from "../media/animations/bike.json";
 
 const PlayersComponent = () => {
   const dispatch = useDispatch();
-  const { count, names, winnerName, error, errorData, modal } = useSelector(
-    (state) => state
-  );
+  const { count, names, winnerName, error, errorData, modal, teemName } =
+    useSelector((state) => state);
   const [playerCountInput, setPlayerCountInput] = useState(count);
 
   useEffect(() => {
@@ -52,61 +52,72 @@ const PlayersComponent = () => {
 
   return (
     <div className="">
-      {playerCountInput < 6 && (
-        <div className="bike-animation">
-          <Lottie animationData={bike} />
-        </div>
-      )}
-      <Box
-        component="form"
-        sx={{
-          "& .MuiTextField-root": { m: 1, width: "320px" },
-        }}
-        autoComplete="off"
-      >
-        <div>
-          <TextField
-            className="my-own"
-            id="outlined-required"
-            label="Введите число участников"
-            onChange={handleCountChange}
-            value={playerCountInput}
-            required
-          />
-        </div>
-      </Box>
+      <div className="bike-animation">
+        <Lottie animationData={bike} />
+      </div>
 
-      {playerCountInput && (
+      <div className="players-component-form">
         <Box
           component="form"
           sx={{
             "& .MuiTextField-root": { m: 1, width: "320px" },
           }}
-          //autoComplete="off"
+          autoComplete="off"
         >
           <div>
-            {Array.from({ length: count }, (_, index) => (
-              <div>
-                <OwnTextFieldInput
-                  key={index}
-                  label={`Игрок ${index + 1}:`}
-                  variant="outlined"
-                  value={names[index] || ""}
-                  onChange={(e) => handleNameChange(e, index)}
-                  required
-                  id="margin-normal"
-                />
-              </div>
-            ))}
-            <OutlineSubmitButton
-              onClick={() => {
-                dispatch(findWinner());
-              }}
-              title="Send"
+            <TextField
+              className="my-own"
+              id="outlined-required"
+              label="Введите название команды"
+              onChange={setTeemName}
+              value={teemName}
+              required
+            />
+          </div>
+          <div>
+            <TextField
+              className="my-own"
+              id="outlined-required"
+              label="Введите число участников"
+              onChange={handleCountChange}
+              value={playerCountInput}
+              required
             />
           </div>
         </Box>
-      )}
+
+        {playerCountInput && (
+          <Box
+            component="form"
+            sx={{
+              "& .MuiTextField-root": { m: 1, width: "320px" },
+            }}
+            //autoComplete="off"
+          >
+            <div>
+              {Array.from({ length: count }, (_, index) => (
+                <div>
+                  <OwnTextFieldInput
+                    key={index}
+                    label={`Игрок ${index + 1}:`}
+                    variant="outlined"
+                    value={names[index] || ""}
+                    onChange={(e) => handleNameChange(e, index)}
+                    required
+                    id="margin-normal"
+                  />
+                </div>
+              ))}
+              <OutlineSubmitButton
+                onClick={() => {
+                  dispatch(findWinner());
+                }}
+                title="Send"
+              />
+            </div>
+          </Box>
+        )}
+      </div>
       <ModalComponent
         open={modal}
         handleClose={handleClose}

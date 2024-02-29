@@ -42,7 +42,7 @@ const WheelComponent = () => {
   };
 
   return (
-    <div>
+    <div className="wheel-step centered">
       {confetti && <Confetti />}
       {!deleteWheel && (
         <div className={`wheel-wrapper ${!showWheel ? "fade-out" : ""}`}>
