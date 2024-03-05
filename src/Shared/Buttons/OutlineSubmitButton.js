@@ -5,7 +5,7 @@ import "./outlineSubmitButton.scss";
 const OutlineSubmitButton = (props) => {
   return (
     <Button
-      className="my-own-button"
+      className={`my-own-button ${props.className ? props.className : ""}`}
       variant="outlined"
       color="primary"
       onClick={props.onClick}

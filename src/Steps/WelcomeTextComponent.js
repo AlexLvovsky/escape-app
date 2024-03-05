@@ -8,16 +8,16 @@ import robot from "../media/animations/robot.json";
 import work from "../media/animations/work.json";
 import { steps } from "../store/enum";
 import ReactPlayer from "react-player";
-import aa from "../media/audio/hello.mp3";
+import audioHello from "../media/audio/hello.mp3";
 import Typewriter from "../Shared/TypeWritter/TypeWritter";
 
 const WelcomeComponent = () => {
   const dispatch = useDispatch();
   const [startWriting, setStartWriting] = useState(false);
   const [nextStep, setNextStep] = useState(false);
-  let c = `Добрый день! Спасибо, что согласились протестировать наш квест. Этот квест командный и cегодня все команды стартуют 
-    ровно в 16:00. Следуйте инструкциям на экране. Искуственный интеллект выберет одного из вас попросит ввести личные данные.
-     Не беспокойтесь, ваши личные данные будут надёжно защищены. На основе этих данных искуственный интеллект простроит ваш 
+  let c = `Добрый день! <br /> Спасибо, что согласились протестировать наш квест. <br /> Этот квест командный и cегодня все команды стартуют 
+    ровно в 16:00. <br />Следуйте инструкциям на экране. Искуственный интеллект выберет одного из вас попросит ввести личные данные.
+     Не беспокойтесь, ваши личные данные будут надёжно защищены. На основе этих данных искуственный интеллект построит ваш 
      индивидуальный маршрут, который позволит не пересекаться с другими командами. 
      Выиграет та команда, которая раньше других успешно завершит свой маршрут.`;
 
@@ -36,7 +36,7 @@ const WelcomeComponent = () => {
       {!nextStep && (
         <div className="welcome-player-button">
           <ReactPlayer
-            url={aa}
+            url={audioHello}
             width="100%"
             height="1px"
             controls={false}

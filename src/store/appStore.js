@@ -47,24 +47,30 @@ const generateNameVariations = () => {
 
   return variations;
 };
+
+export const checkRightAnswer = (rightAnswers, answer) => {
+  const success = findBestMatch(answer, rightAnswers);
+  if (success != null) {
+    return true;
+  }
+  return false;
+};
+
 const initialState = {
   value: 0,
   segColors: [
-    "#39328b",
-    "#3b3c8a",
-    "#3d4b89",
-    "#3f5a88",
-    "#417987",
-    "#439886",
-    "#45a785",
-    "#47b684",
-    "#49c583",
-    "#4bcd82",
+    "#000080",
+    "#4169E1",
+    "#010c80a3",
+    "#0047AB",
+    "#3F00FF",
+    "#00008B",
+    "#0F52BA",
   ],
   teemName: null,
   names: [],
   playersObject: {},
-  currentStep: steps.welcome,
+  currentStep: steps.puzzle_1,
   count: "",
   winnerName: null,
   winnerIndex: null,
@@ -73,6 +79,7 @@ const initialState = {
   errorType: null,
   errorData: null,
   modal: false,
+  nestedModal: false,
   spin: false,
   showText: false,
   confetti: false,
@@ -130,6 +137,9 @@ export const appStore = createSlice({
     openModal: (state, action) => {
       state.modal = action.payload;
     },
+    openNestedModal: (state, action) => {
+      state.nestedModal = action.payload;
+    },
     setError: (state, action) => {
       state.error = action.payload.error;
       state.errorType = action.payload.type;
@@ -174,6 +184,7 @@ export const {
   setShowText,
   setShouldUpdateStep,
   setTeemName,
+  openNestedModal,
 } = appStore.actions;
 
 export default appStore.reducer;
