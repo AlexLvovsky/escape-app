@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { steps, errorType } from "./enum";
+import { steps, errorType, subSteps } from "./enum";
 import { errors } from "./variables";
 import _ from "lodash";
 
@@ -70,7 +70,8 @@ const initialState = {
   teemName: null,
   names: [],
   playersObject: {},
-  currentStep: steps.welcome,
+  currentStep: steps.home,
+  currentSubStep: subSteps.about_location,
   count: "",
   winnerName: null,
   winnerIndex: null,
@@ -103,6 +104,10 @@ export const appStore = createSlice({
       state.teemName = action.payload;
     },
     setCurrentStep: (state, action) => {
+      state.currentStep = action.payload.currentStep;
+      state.currentStep = action.payload.subStep || subSteps.undefined;
+    },
+    setSubStep: (state, action) => {
       state.currentStep = action.payload;
     },
     findWinner: (state, action) => {
@@ -185,6 +190,7 @@ export const {
   setShouldUpdateStep,
   setTeemName,
   openNestedModal,
+  setSubStep,
 } = appStore.actions;
 
 export default appStore.reducer;

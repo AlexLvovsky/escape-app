@@ -8,8 +8,8 @@ import WinnerDataComponent from "./WinnerDataComponent";
 import WheelComponent from "./WheelComponent";
 import LoaderLetters from "../Shared/LoaderLetters/LoaderLetters";
 import SurpriseHerComponent from "./SurpriseHerComponent";
-import MultiTaskingPuzzle from "./MultiTaskingPuzzle";
-import SingleTaskPuzzle from "./SingleTaskPuzzle";
+import MultiTaskingPuzzle from "../Shared/Multi/MultiTaskingPuzzle";
+import SingleTaskPuzzle from "../Shared/Single/SingleTaskPuzzle";
 import { poetryPuzzleData, location1 } from "../store/puzzlesData";
 
 const MainAppComponent = () => {
