@@ -1,13 +1,21 @@
+@font-face {
+  font-family: "MokotoGlitchMark";
+  src: url("/public/fonts/Mokoto Demo.ttf") format("truetype");
+
+  /* src: url("/public/fonts/Mokoto Glitch Mark.otf") format("otf"); */
+  font-style: normal;
+  font-weight: normal;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: -apple-system, monospace, "Mokoto Glitch Mark", "Chilanka",
+    "cursive" !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  /* font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", */
+  /* monospace; */
 }

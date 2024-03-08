@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import OwnTextFieldInput from "../Shared/WhiteTextField";
 import { Box } from "@mui/material";
 import { checkRightAnswer } from "../store/appStore";
@@ -21,7 +21,11 @@ const ClueData = (props) => {
   return (
     <div className="clue-item-wrapper">
       {props.clueData.text && <div>{props.clueData.text}</div>}
-      {props.clueData.image && <div>{props.clueData.image}</div>}
+      {props.clueData.fileName && (
+        <div className="puzzle-image">
+          <img src={`/${props.clueData.fileName}`} alt="" />
+        </div>
+      )}
     </div>
   );
 };
@@ -34,6 +38,15 @@ const MultiTaskingPuzzle = (props) => {
 
   const [puzzleData, setPuzzleData] = useState(props.data);
   const [activePuzzleId, setActivePuzzleId] = useState(null);
+  useEffect(() => {
+    const puzzlesCount = puzzleData.length;
+    const doneCount = puzzleData.filter((item) => item.done === true);
+    if (puzzlesCount == doneCount.length) {
+      //onPuzzleCompleted callback
+      //props.onPuzzleCompleted();
+      console.log("all puzzles are completed");
+    }
+  }, [puzzleData]);
 
   const onInputChange = (value, puzzleItemId) => {
     setPuzzleData((prevPuzzleData) => {
@@ -113,9 +126,9 @@ const MultiTaskingPuzzle = (props) => {
             dangerouslySetInnerHTML={{ __html: puzzle.text }}
           />
         )}
-        {puzzle.image && (
+        {puzzle.fileName && (
           <div className="puzzle-image">
-            <image scr={puzzle.image} />
+            <img src={`/${puzzle.fileName}`} alt="" />
           </div>
         )}
         <Box
@@ -155,7 +168,7 @@ const MultiTaskingPuzzle = (props) => {
   };
 
   return (
-    <div className="poetry-puzzle-wrapper">
+    <div className="puzzle-wrapper">
       {puzzleData.map((puzzle, index) => {
         return (
           <div>

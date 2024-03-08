@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import OwnTextFieldInput from "../Shared/WhiteTextField";
 import { Box } from "@mui/material";
-import { checkRightAnswer } from "../store/appStore";
 import Lottie from "lottie-react";
 import right from "../media/animations/right.json";
 import help from "../media/icons/help.svg";
 import ModalComponent from "../Shared/Modal/ModalComponent";
 import { useSelector, useDispatch } from "react-redux";
 import {
+  checkRightAnswer,
   setLoading,
   setCurrentStep,
   openModal,
@@ -17,11 +17,14 @@ import { steps, modalCauses } from "../store/enum";
 import NestedModal from "../Shared/Modal/NestedModalComponent";
 
 const ClueData = (props) => {
-  console.log(props);
   return (
     <div className="clue-item-wrapper">
       {props.clueData.text && <div>{props.clueData.text}</div>}
-      {props.clueData.image && <div>{props.clueData.image}</div>}
+      {props.clueData.fileName && (
+        <div className="puzzle-image">
+          <img src={`/${props.clueData.fileName}`} alt="" />
+        </div>
+      )}
     </div>
   );
 };
@@ -33,6 +36,12 @@ const SingleTaskPuzzle = (props) => {
   );
 
   const [puzzleData, setPuzzleData] = useState(props.data);
+  useEffect(() => {
+    if (puzzleData.done == true) {
+      //onPuzzleCompleted callback
+      //props.onPuzzleCompleted();
+    }
+  }, [puzzleData.done]);
 
   const onInputChange = (value) => {
     setPuzzleData((prevPuzzleData) => {
@@ -82,18 +91,18 @@ const SingleTaskPuzzle = (props) => {
     }
   };
 
-  const renderItem = (puzzle) => {
+  const renderItem = () => {
     return (
       <div className="puzzle-item">
-        {puzzle.text && (
+        {puzzleData.text && (
           <div
             className="puzzle-text left"
-            dangerouslySetInnerHTML={{ __html: puzzle.text }}
+            dangerouslySetInnerHTML={{ __html: puzzleData.text }}
           />
         )}
-        {puzzle.image && (
+        {puzzleData.fileName && (
           <div className="puzzle-image">
-            <image scr={puzzle.image} />
+            <img src={`/${puzzleData.fileName}`} alt="" />
           </div>
         )}
         <Box
@@ -115,14 +124,14 @@ const SingleTaskPuzzle = (props) => {
               label={"Ваш ответ"}
               variant="outlined"
               onChange={(e) => onInputChange(e.target.value)}
-              value={puzzle.answer}
+              value={puzzleData.answer}
             />
-            {puzzle.done && (
+            {puzzleData.done && (
               <div className="right-answer-animation">
                 <Lottie animationData={right} />
               </div>
             )}
-            {puzzle.clues.map((clue) => {
+            {puzzleData.clues.map((clue) => {
               return <div>{clue.used && <ClueData clueData={clue} />}</div>;
             })}
           </div>
@@ -132,14 +141,14 @@ const SingleTaskPuzzle = (props) => {
   };
 
   return (
-    <div className="poetry-puzzle-wrapper">
-      <div>{renderItem(puzzleData)}</div>
+    <div className="puzzle-wrapper">
+      <div>{renderItem()}</div>
 
       {modal && (
         <ModalComponent
           open={modal}
           handleClose={() => dispatch(openModal(false))}
-          title={"Вы уверены, что хотите видеть подсказку?"}
+          title={"Вы уверены, что хотите подсказку?"}
           cause={modalCauses.info}
           button={true}
           extraButton={true}

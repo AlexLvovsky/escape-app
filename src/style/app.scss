@@ -5,7 +5,7 @@ body {
 }
 .escape-app-main-wrapper {
   margin: 0 auto;
-  padding: 15px 40px;
+  padding: 40px 15px;
   min-height: 100vh; // Make sure body takes 100% of the viewport height
 
   display: flex;
@@ -56,6 +56,11 @@ body {
       opacity: 1;
     }
   }
+  // .welcome-wrapper {
+  //   .text {
+  //     //background-image: url("../../public/shared/introduction.jpeg");
+  //   }
+  // }
   .welcome-player-button {
     margin-top: 100px;
     button.play {
@@ -97,8 +102,38 @@ body {
       margin: 0 7px;
     }
   }
+  .clue-item-wrapper {
+    padding-top: 20px;
+  }
 }
-.poetry-puzzle-wrapper {
+.puzzle-wrapper {
   text-align: left;
   padding: 18px;
+  .puzzle-image {
+    img {
+      width: 100%;
+    }
+  }
+}
+.css-1r9rm7v-MuiFormControl-root-MuiTextField-root {
+  .MuiOutlinedInput-root {
+    border-color: #55e1fb !important;
+    color: #55e1fb !important;
+    fieldset {
+      border-color: #55e1fb !important;
+    }
+    .MuiInputBase-input {
+      color: #55e1fb !important;
+    }
+    .MuiOutlinedInput-root fieldset {
+      border-color: #55e1fb !important;
+    }
+    .MuiInputLabel-root {
+      color: #55e1fb !important;
+    }
+  }
+
+  .MuiInputLabel-root {
+    color: #55e1fb !important;
+  }
 }

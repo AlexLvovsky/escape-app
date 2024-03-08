@@ -10,7 +10,7 @@ import LoaderLetters from "../Shared/LoaderLetters/LoaderLetters";
 import SurpriseHerComponent from "./SurpriseHerComponent";
 import MultiTaskingPuzzle from "./MultiTaskingPuzzle";
 import SingleTaskPuzzle from "./SingleTaskPuzzle";
-import { poetryPuzzleData, singleDataTest } from "../store/puzzlesData";
+import { poetryPuzzleData, location1 } from "../store/puzzlesData";
 
 const MainAppComponent = () => {
   const { currentStep, loader } = useSelector((state) => state);
@@ -28,8 +28,8 @@ const MainAppComponent = () => {
       case steps.surprise_her:
         return <SurpriseHerComponent />;
       case steps.puzzle_1:
-        // return <MultiTaskingPuzzle data={poetryPuzzleData} />;
-        return <SingleTaskPuzzle data={singleDataTest} />;
+        return <MultiTaskingPuzzle data={poetryPuzzleData} />;
+      //return <SingleTaskPuzzle data={location1} />;
 
       default:
         console.log(`Sorry, we are out of the game.`);

@@ -24,10 +24,11 @@ const WelcomeComponent = () => {
   const text = "Your text goes here"; // Replace
   return (
     <div className="welcome-wrapper">
-      <div className="animation">
-        <Lottie animationData={robot} />
-      </div>
-
+      {!startWriting && (
+        <div className="animation">
+          <Lottie animationData={robot} />
+        </div>
+      )}
       {startWriting && (
         <div className="text">
           <Typewriter text={c} delay={75} />
