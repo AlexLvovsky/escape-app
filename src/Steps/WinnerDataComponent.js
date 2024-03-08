@@ -23,7 +23,8 @@ const WinnerDataComponent = () => {
   useEffect(() => {
     // Update the current step after loader is set to false
     if (shouldUpdateStep) {
-      dispatch(setCurrentStep(steps.surprise_her));
+      dispatch(setCurrentStep({ currentStep: steps.surprise_her }));
+
       dispatch(setShouldUpdateStep(false)); // Reset the state
     }
   }, [shouldUpdateStep]);

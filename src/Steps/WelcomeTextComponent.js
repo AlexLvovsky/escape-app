@@ -64,7 +64,9 @@ const WelcomeComponent = () => {
       {nextStep && (
         <div className="welcome-start-button">
           <OutlineSubmitButton
-            onClick={() => dispatch(setCurrentStep(steps.players))}
+            onClick={() =>
+              dispatch(setCurrentStep({ currentStep: steps.players }))
+            }
             title="Далее"
           />
         </div>

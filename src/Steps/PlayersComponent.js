@@ -25,7 +25,7 @@ const PlayersComponent = () => {
 
   useEffect(() => {
     if (winnerName) {
-      dispatch(setCurrentStep(steps.wheel));
+      dispatch(setCurrentStep({ currentStep: steps.wheel }));
     }
   }, [winnerName]);
 

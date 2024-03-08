@@ -1,20 +1,15 @@
 import React, { useState, useEffect } from "react";
-import OwnTextFieldInput from "../Shared/WhiteTextField";
+import OwnTextFieldInput from "../WhiteTextField";
 import { Box } from "@mui/material";
-import { checkRightAnswer } from "../store/appStore";
+import { checkRightAnswer } from "../../store/appStore";
 import Lottie from "lottie-react";
-import right from "../media/animations/right.json";
-import help from "../media/icons/help.svg";
-import ModalComponent from "../Shared/Modal/ModalComponent";
+import right from "../../media/animations/right.json";
+import help from "../../media/icons/help.svg";
+import ModalComponent from "../Modal/ModalComponent";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  setLoading,
-  setCurrentStep,
-  openModal,
-  openNestedModal,
-} from "../store/appStore";
-import { steps, modalCauses } from "../store/enum";
-import NestedModal from "../Shared/Modal/NestedModalComponent";
+import { openModal, openNestedModal } from "../../store/appStore";
+import { modalCauses } from "../../store/enum";
+import NestedModal from "../Modal/NestedModalComponent";
 
 const ClueData = (props) => {
   console.log(props);

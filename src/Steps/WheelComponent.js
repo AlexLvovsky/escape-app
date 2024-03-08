@@ -79,7 +79,7 @@ const WheelComponent = () => {
           <div>
             <OutlineSubmitButton
               onClick={() => {
-                dispatch(setCurrentStep(steps.winner_data));
+                dispatch(setCurrentStep({ currentStep: steps.winner_data }));
               }}
               title="Я согласен быть избранным!"
             />
