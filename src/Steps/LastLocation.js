@@ -6,6 +6,7 @@ import QrCode from "../Shared/QrCode/QrCode";
 import SingleTaskPuzzle from "../Shared/Single/SingleTaskPuzzle";
 import OutlineSubmitButton from "../Shared/Buttons/OutlineSubmitButton";
 import MultiTaskingPuzzle from "../Shared/Multi/MultiTaskingPuzzle";
+import Final from "./Final";
 
 const LastLocation = (props) => {
   const dispatch = useDispatch();
@@ -20,46 +21,16 @@ const LastLocation = (props) => {
             bottomButtonText="В путь!"
             onBottomButtonClick={() => dispatch(setSubStep(subSteps.qr_code))}
           />
-          //   <SingleTaskPuzzle
-          //     data={props.data.puzzleAboutLoccation}
-          //     bottomButtonText="В путь!"
-          //     onBottomButtonClick={() => dispatch(setSubStep(subSteps.qr_code))}
-          //   />
         );
       case subSteps.qr_code:
         return (
           <QrCode
             data={props.data.qRCode}
-            action={() => dispatch(setSubStep(subSteps.puzzle_prev_main))}
+            action={() => dispatch(setSubStep(subSteps.end))}
           />
         );
-      //   case subSteps.puzzle_prev_main:
-      //     return (
-      //       <SingleTaskPuzzle
-      //         data={props.data.puzzlePrevMain}
-      //         bottomButtonText="Далее"
-      //         onBottomButtonClick={() =>
-      //           dispatch(setSubStep(subSteps.puzzle_main))
-      //         }
-      //       />
-      //     );
-      //   case subSteps.puzzle_main:
-      //     return (
-      //       <div>
-      //         <SingleTaskPuzzle
-      //           data={props.data.puzzleMain}
-      //           bottomButtonText="Хочу знать куда ехать дальше"
-      //           onBottomButtonClick={() =>
-      //             dispatch(
-      //               setCurrentStep({
-      //                 currentStep: steps.tennis,
-      //                 subStep: subSteps.about_location,
-      //               })
-      //             )
-      //           }
-      //         />
-      //       </div>
-      //     );
+      case subSteps.end:
+        return <Final />;
     }
   };
   return <div>{renderData()}</div>;

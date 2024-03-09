@@ -69,13 +69,14 @@ const MultiTaskingPuzzle = (props) => {
       } else {
         setBottomButton(true);
       }
-      //onPuzzleCompleted callback
-      //props.onPuzzleCompleted();
       console.log("all puzzles are completed");
     }
   }, [puzzleData]);
 
   const onInputChange = (value, puzzleItemId) => {
+    setShowIncorrectAnswer((prevArray) =>
+      prevArray.filter((item, index) => item.id == puzzleItemId)
+    );
     setPuzzleData((prevPuzzleData) => {
       const updatedData = prevPuzzleData.map((puzzle) => {
         if (puzzle.id === puzzleItemId) {
@@ -146,11 +147,6 @@ const MultiTaskingPuzzle = (props) => {
   const handleAddIcon = (id) => {
     setShowIncorrectAnswer((prevArray) => [...prevArray, id]);
   };
-  const handleRemoveIcon = (id) => {
-    setShowIncorrectAnswer((prevArray) =>
-      prevArray.filter((item, index) => item !== id)
-    );
-  };
 
   const renderItem = (puzzle) => {
     return (
@@ -187,16 +183,17 @@ const MultiTaskingPuzzle = (props) => {
                   label={"Ваш ответ"}
                   variant="outlined"
                   onChange={(e) => {
-                    handleRemoveIcon(puzzle.id);
                     onInputChange(e.target.value, puzzle.id);
                   }}
                   value={puzzle.answer}
                 />
-                <OutlineSubmitButton
-                  title="?"
-                  className="extra-small "
-                  onClick={() => handleAddIcon(puzzle.id)}
-                />
+                {!puzzle.done && (
+                  <OutlineSubmitButton
+                    title="Проверить"
+                    className="small"
+                    onClick={() => handleAddIcon(puzzle.id)}
+                  />
+                )}
               </div>
               {puzzle.done && (
                 <div className="right-answer-animation">
@@ -230,44 +227,45 @@ const MultiTaskingPuzzle = (props) => {
       })}
       {submitPlayingLastDescription && (
         <div className="last-description">
-          {lastDescription && (
-            <>
-              {console.log(lastDescription)}
-              {startWritingLastDescription && (
-                <div className="text">
-                  <Typewriter text={lastDescription.text} delay={75} />
-                </div>
-              )}
-              <ReactPlayer
-                url={lastDescription.audio}
-                width="100%"
-                height="1px"
-                controls={false}
-                playing={true}
-                muted={false}
-                type="audio/mp3"
-                volume={1}
-                playIcon={<button className="play">Play</button>}
-                light={<OutlineSubmitButton title="Далее" />}
-                onStart={() => {
-                  setTimeout(() => {
-                    setStartWritingLastDescription(true);
-                  }, 1000);
-                }}
-                onEnded={() => {
-                  setBottomButton(true);
-                }}
-              />
-            </>
-          )}
-          {bottomButton && (
-            <OutlineSubmitButton
-              onClick={props.onBottomButtonClick}
-              title={props.bottomButtonText}
+          <>
+            {startWritingLastDescription && (
+              <div className="text">
+                <Typewriter text={lastDescription.text} delay={75} />
+              </div>
+            )}
+            <ReactPlayer
+              url={lastDescription.audio}
+              width="100%"
+              height="1px"
+              controls={false}
+              playing={true}
+              muted={false}
+              type="audio/mp3"
+              volume={1}
+              playIcon={<button className="play">Play</button>}
+              light={<OutlineSubmitButton title="Далее" />}
+              onStart={() => {
+                setTimeout(() => {
+                  setStartWritingLastDescription(true);
+                }, 1000);
+              }}
+              onEnded={() => {
+                setBottomButton(true);
+              }}
             />
-          )}
+          </>
         </div>
       )}
+      {bottomButton && (
+        <div className="puzzle-item-bottom-button">
+          <OutlineSubmitButton
+            onClick={props.onBottomButtonClick}
+            title={props.bottomButtonText}
+            className="w-100"
+          />
+        </div>
+      )}
+
       {modal && (
         <ModalComponent
           open={modal}

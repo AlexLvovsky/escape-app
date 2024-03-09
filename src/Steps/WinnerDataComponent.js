@@ -51,7 +51,7 @@ const WinnerDataComponent = () => {
     setTimeout(() => {
       dispatch(setLoading(false));
       dispatch(setShouldUpdateStep(true));
-    }, 3000);
+    }, 10000);
   };
 
   return (

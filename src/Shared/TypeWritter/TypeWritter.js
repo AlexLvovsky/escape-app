@@ -6,7 +6,6 @@ const convertToPlainText = (text) => {
 };
 
 const Typewriter = ({ text, delay }) => {
-  console.log(typeof text);
   const [currentText, setCurrentText] = useState("");
   const [currentIndex, setCurrentIndex] = useState(0);
 

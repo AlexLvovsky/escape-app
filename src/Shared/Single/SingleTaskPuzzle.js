@@ -38,7 +38,7 @@ const SingleTaskPuzzle = (props) => {
     useState(false);
   //
   // const [showPuzzle, setShowPuzzle] = useState(
-  //   puzzleData.discription_text && puzzleData.discription_filePath
+  //   puzzleData.description_text && puzzleData.description_filePath
   //     ? false
   //     : true
   // );
@@ -48,14 +48,19 @@ const SingleTaskPuzzle = (props) => {
 
   const [puzzleData, setPuzzleData] = useState(props.data);
   const [bottomButton, setBottomButton] = useState(
-    puzzleData.last_discription_text ? false : true
+    puzzleData.last_description_text ? false : true
   );
   const [showIncorrectAnswer, setShowIncorrectAnswer] = useState(false);
+  const [submitPlayingLastDescription, setSubmitPlayingLastDescription] =
+    useState(false);
 
   useEffect(() => {
     if (puzzleData.done == true) {
-      //onPuzzleCompleted callback
-      //props.onPuzzleCompleted();
+      if (puzzleData.last_description_text) {
+        setSubmitPlayingLastDescription(true);
+      } else {
+        setBottomButton(true);
+      }
     }
   }, [puzzleData.done]);
 
@@ -112,11 +117,11 @@ const SingleTaskPuzzle = (props) => {
   const renderItem = () => {
     return (
       <div className="puzzle-item">
-        {/* {puzzleData.discription_text && puzzleData.discription_filePath && (
+        {/* {puzzleData.description_text && puzzleData.description_filePath && (
           <div className="description">
             {startWritingDescription && (
               <div className="text">
-                <Typewriter text={puzzleData.discription_text} delay={75} />
+                <Typewriter text={puzzleData.description_text} delay={75} />
               </div>
             )}{" "}
             <ReactPlayer
@@ -177,11 +182,13 @@ const SingleTaskPuzzle = (props) => {
                     onChange={(e) => onInputChange(e.target.value)}
                     value={puzzleData.answer}
                   />
-                  <OutlineSubmitButton
-                    title="?"
-                    className="extra-small "
-                    onClick={() => setShowIncorrectAnswer(true)}
-                  />
+                  {!puzzleData.done && (
+                    <OutlineSubmitButton
+                      title="Проверить"
+                      className="small"
+                      onClick={() => setShowIncorrectAnswer(true)}
+                    />
+                  )}
                 </div>
                 {puzzleData.done && (
                   <div className="right-answer-animation">
@@ -202,18 +209,19 @@ const SingleTaskPuzzle = (props) => {
           </div>
           {/* )} */}
         </div>
-        {puzzleData.last_discription_text && puzzleData.done && (
+        {/* {puzzleData.last_description_text && puzzleData.done && ( */}
+        {submitPlayingLastDescription && (
           <div className="last-description">
             {startWritingLastDescription && (
               <div className="text">
                 <Typewriter
-                  text={puzzleData.last_discription_text}
+                  text={puzzleData.last_description_text}
                   delay={75}
                 />
               </div>
             )}
             <ReactPlayer
-              url={puzzleData.last_discription_filePath}
+              url={puzzleData.last_description_filePath}
               width="100%"
               height="1px"
               controls={false}
@@ -222,7 +230,7 @@ const SingleTaskPuzzle = (props) => {
               type="audio/mp3"
               volume={1}
               playIcon={<button className="play">Play</button>}
-              light={<OutlineSubmitButton title="Далее" />}
+              light={<OutlineSubmitButton title="Далее" className="mt-80" />}
               onStart={() => {
                 setTimeout(() => {
                   setStartWritingLastDescription(true);
@@ -235,10 +243,13 @@ const SingleTaskPuzzle = (props) => {
           </div>
         )}
         {bottomButton && puzzleData.done && (
-          <OutlineSubmitButton
-            onClick={props.onBottomButtonClick}
-            title={props.bottomButtonText}
-          />
+          <div className="puzzle-item-bottom-button">
+            <OutlineSubmitButton
+              onClick={props.onBottomButtonClick}
+              title={props.bottomButtonText}
+              className="w-100"
+            />
+          </div>
         )}
       </div>
     );

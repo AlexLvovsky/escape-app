@@ -7,9 +7,10 @@ const QrCode = (props) => {
       <div className="qr-code-image">
         <img src={props.data.filePath} />
       </div>
+      <h2>Приехали?</h2>
       <OutlineSubmitButton
         onClick={props.action}
-        title="Приехали? Нажмите для авторизации"
+        title=" Нажмите для авторизации"
       />
     </div>
   );

@@ -8,14 +8,18 @@ import WinnerDataComponent from "./WinnerDataComponent";
 import WheelComponent from "./WheelComponent";
 import LoaderLetters from "../Shared/LoaderLetters/LoaderLetters";
 import SurpriseHerComponent from "./SurpriseHerComponent";
-import MultiTaskingPuzzle from "../Shared/Multi/MultiTaskingPuzzle";
-import SingleTaskPuzzle from "../Shared/Single/SingleTaskPuzzle";
-import { poetryPuzzleData, location1 } from "../store/puzzlesData";
 import { homeLocationData } from "../store/homeLocation";
 import { lastLoccation } from "../store/lastLocation";
+import { schoolLoccation } from "../store/schoolLocation";
+import { childLocation } from "../store/childLocation";
+import { courtLocation } from "../store/courtLocation";
+import { baazarLoccation } from "../store/baazarLocation";
 import LocationHome from "./LocationHome";
 import LocationTennis from "./LocationTennis";
 import LastLocation from "./LastLocation";
+import LocationBaazar from "./LocationBaazar";
+import LocationPark from "./LocationPark";
+import LocationSchool from "./LocationSchool";
 
 const MainAppComponent = () => {
   const { currentStep, loader } = useSelector((state) => state);
@@ -33,13 +37,16 @@ const MainAppComponent = () => {
         return <WinnerDataComponent />;
       case steps.surprise_her:
         return <SurpriseHerComponent />;
-      // case steps.puzzle_1:
-      //   return <MultiTaskingPuzzle data={poetryPuzzleData} />;
-      //return <SingleTaskPuzzle data={location1} />;
       case steps.home:
         return <LocationHome data={homeLocationData} />;
       case steps.tennis:
-        return <LocationTennis data={homeLocationData} />;
+        return <LocationTennis data={courtLocation} />;
+      case steps.park:
+        return <LocationPark data={childLocation} />;
+      case steps.shopping:
+        return <LocationBaazar data={baazarLoccation} />;
+      case steps.school:
+        return <LocationSchool data={schoolLoccation} />;
       case steps.end:
         return <LastLocation data={lastLoccation} />;
       default:

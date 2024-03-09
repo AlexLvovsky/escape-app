@@ -4,7 +4,6 @@ import { setCurrentStep, setSubStep } from "../store/appStore";
 import { subSteps, steps } from "../store/enum";
 import QrCode from "../Shared/QrCode/QrCode";
 import SingleTaskPuzzle from "../Shared/Single/SingleTaskPuzzle";
-import OutlineSubmitButton from "../Shared/Buttons/OutlineSubmitButton";
 
 const LocationTennis = (props) => {
   const dispatch = useDispatch();
@@ -32,7 +31,9 @@ const LocationTennis = (props) => {
           <SingleTaskPuzzle
             data={props.data.puzzlePrevMain}
             bottomButtonText="Далее"
-            onBottomButtonClick={() => setSubStep(subSteps.puzzle_main)}
+            onBottomButtonClick={() =>
+              dispatch(setSubStep(subSteps.puzzle_main))
+            }
           />
         );
       case subSteps.puzzle_main:

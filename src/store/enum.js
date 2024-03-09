@@ -18,6 +18,7 @@ export const subSteps = {
   qr_code: "qr_code",
   puzzle_prev_main: "puzzle_prev_main",
   puzzle_main: "puzzle_main",
+  end: "end",
 };
 export const errorType = {
   general: "general",

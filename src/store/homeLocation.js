@@ -43,7 +43,7 @@ export const homeLocationData = {
     description_text: ``,
     description_filePath: ``,
     answer: "",
-    rightAnswer: ["1", ""],
+    rightAnswer: ["1"],
     done: false,
     last_description_text: `Поздравляем! Вы достигли первой локации. Это дом, в котором проживает ваш капитан. Чтобы превзойти искусственный интеллект, важно понять ключевые различия между искусственным интеллектом и живым человеком. Попробуйте определить, в чем именно человек непременно превосходит искусственный интеллект.`,
     last_description_filePath: `/locationHome/part-2.mp3`,
