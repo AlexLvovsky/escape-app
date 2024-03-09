@@ -1,11 +1,11 @@
 import React from "react";
-import OutlineSubmitButton from "./Buttons/OutlineSubmitButton";
+import OutlineSubmitButton from "../Buttons/OutlineSubmitButton";
 
 const QrCode = (props) => {
   return (
     <div className="qr_code-wrapper">
       <div className="qr-code-image">
-        <img src={props.data.fileName} />
+        <img src={props.data.filePath} />
       </div>
       <OutlineSubmitButton
         onClick={props.action}

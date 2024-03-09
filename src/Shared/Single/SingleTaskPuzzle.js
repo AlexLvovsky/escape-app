@@ -3,6 +3,7 @@ import OwnTextFieldInput from "../WhiteTextField";
 import { Box } from "@mui/material";
 import Lottie from "lottie-react";
 import right from "../../media/animations/right.json";
+import unlike from "../../media/animations/unlike.json";
 import help from "../../media/icons/help.svg";
 import ModalComponent from "../Modal/ModalComponent";
 import { useSelector, useDispatch } from "react-redux";
@@ -35,6 +36,7 @@ const SingleTaskPuzzle = (props) => {
   // const [startWritingDescription, setStartWritingDescription] = useState(false);
   const [startWritingLastDescription, setStartWritingLastDescription] =
     useState(false);
+  //
   // const [showPuzzle, setShowPuzzle] = useState(
   //   puzzleData.discription_text && puzzleData.discription_filePath
   //     ? false
@@ -45,7 +47,11 @@ const SingleTaskPuzzle = (props) => {
   );
 
   const [puzzleData, setPuzzleData] = useState(props.data);
-  const [bottomButton, setBottomButton] = useState(false);
+  const [bottomButton, setBottomButton] = useState(
+    puzzleData.last_discription_text ? false : true
+  );
+  const [showIncorrectAnswer, setShowIncorrectAnswer] = useState(false);
+
   useEffect(() => {
     if (puzzleData.done == true) {
       //onPuzzleCompleted callback
@@ -54,6 +60,7 @@ const SingleTaskPuzzle = (props) => {
   }, [puzzleData.done]);
 
   const onInputChange = (value) => {
+    setShowIncorrectAnswer(false);
     setPuzzleData((prevPuzzleData) => {
       const ans = checkRightAnswer(prevPuzzleData.rightAnswer, value);
       if (ans) {
@@ -62,6 +69,7 @@ const SingleTaskPuzzle = (props) => {
       return { ...prevPuzzleData, done: false, answer: value };
     });
   };
+
   function checkUnusedClues() {
     const unusedClue = puzzleData.clues.find((clue) => !clue.used);
     if (unusedClue) {
@@ -134,7 +142,7 @@ const SingleTaskPuzzle = (props) => {
           </div>
         )} */}
         <div className="puzzle-data">
-          {/* {showPuzzle && ( */}
+          {/* {showPuzzle && ( //check if there is first description*/}
           <div>
             {puzzleData.puzzleText && (
               <div
@@ -161,18 +169,31 @@ const SingleTaskPuzzle = (props) => {
                   </div>
                 </div>
 
-                <OwnTextFieldInput
-                  id="outlined-basic"
-                  label={"Ваш ответ"}
-                  variant="outlined"
-                  onChange={(e) => onInputChange(e.target.value)}
-                  value={puzzleData.answer}
-                />
+                <div className="answer-form">
+                  <OwnTextFieldInput
+                    id="outlined-basic"
+                    label={"Ваш ответ"}
+                    variant="outlined"
+                    onChange={(e) => onInputChange(e.target.value)}
+                    value={puzzleData.answer}
+                  />
+                  <OutlineSubmitButton
+                    title="?"
+                    className="extra-small "
+                    onClick={() => setShowIncorrectAnswer(true)}
+                  />
+                </div>
                 {puzzleData.done && (
                   <div className="right-answer-animation">
                     <Lottie animationData={right} />
                   </div>
                 )}
+                {showIncorrectAnswer && (
+                  <div className="right-answer-animation">
+                    <Lottie animationData={unlike} />
+                  </div>
+                )}
+
                 {puzzleData.clues.map((clue) => {
                   return <div>{clue.used && <ClueData clueData={clue} />}</div>;
                 })}
@@ -213,7 +234,7 @@ const SingleTaskPuzzle = (props) => {
             />
           </div>
         )}
-        {bottomButton && (
+        {bottomButton && puzzleData.done && (
           <OutlineSubmitButton
             onClick={props.onBottomButtonClick}
             title={props.bottomButtonText}

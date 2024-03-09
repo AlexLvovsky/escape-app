@@ -6,7 +6,7 @@ import QrCode from "../Shared/QrCode/QrCode";
 import SingleTaskPuzzle from "../Shared/Single/SingleTaskPuzzle";
 import OutlineSubmitButton from "../Shared/Buttons/OutlineSubmitButton";
 
-const LocationHome = (props) => {
+const LocationSchool = (props) => {
   const dispatch = useDispatch();
   const { currentSubStep } = useSelector((state) => state);
 
@@ -52,4 +52,4 @@ const LocationHome = (props) => {
   };
   return <div>{renderData()}</div>;
 };
-export default LocationHome;
+export default LocationSchool;

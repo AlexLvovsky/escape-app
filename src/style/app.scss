@@ -87,7 +87,7 @@ body {
   .right-answer-animation {
     width: 50px;
     position: absolute;
-    right: 5px;
+    right: 40px;
     top: 40px;
   }
   .clues-wrapper {
@@ -100,6 +100,9 @@ body {
   }
   .clue-item-wrapper {
     padding-top: 20px;
+  }
+  .answer-form {
+    display: flex;
   }
 }
 .puzzle-wrapper {

@@ -16,7 +16,7 @@ const LocationPark = (props) => {
         return (
           <SingleTaskPuzzle
             data={props.aboutLocation}
-            action={setSubStep(subSteps.qr_code)}
+            // action={setSubStep(subSteps.qr_code)}
           />
         );
       case subSteps.qr_code:
@@ -30,7 +30,7 @@ const LocationPark = (props) => {
         return (
           <SingleTaskPuzzle
             data={props.prevPuzzle}
-            action={setSubStep(subSteps.puzzle_main)}
+            // action={setSubStep(subSteps.puzzle_main)}
             bottomButtonText=""
             onBottomButtonClick={setSubStep(subSteps.puzzle_main)}
           />
