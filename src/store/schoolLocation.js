@@ -39,7 +39,7 @@ export const schoolLoccation = {
       },
     ],
   },
-  RCode: {
+  qRCode: {
     filePath: ``,
   },
   puzzlePrevMain: {
