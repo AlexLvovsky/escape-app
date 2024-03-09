@@ -1,15 +1,15 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { setCurrentStep } from "../store/appStore";
-import OutlineSubmitButton from "../Shared/Buttons/OutlineSubmitButton";
-import Lottie from "lottie-react";
-import lock from "../media/animations/lock.json";
-import robot from "../media/animations/robot.json";
-import work from "../media/animations/work.json";
-import { steps } from "../store/enum";
-import ReactPlayer from "react-player";
-import audioHello from "../media/audio/hello.mp3";
-import Typewriter from "../Shared/TypeWritter/TypeWritter";
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { setCurrentStep } from '../store/appStore';
+import OutlineSubmitButton from '../Shared/Buttons/OutlineSubmitButton';
+import Lottie from 'lottie-react';
+import lock from '../media/animations/lock.json';
+import robot from '../media/animations/robot.json';
+import work from '../media/animations/work.json';
+import { steps } from '../store/enum';
+import ReactPlayer from 'react-player';
+import audioHello from '../media/audio/hello.mp3';
+import Typewriter from '../Shared/TypeWritter/TypeWritter';
 
 const WelcomeComponent = () => {
   const dispatch = useDispatch();
@@ -21,7 +21,7 @@ const WelcomeComponent = () => {
      индивидуальный маршрут, который позволит не пересекаться с другими командами. 
      Выиграет та команда, которая раньше других успешно завершит свой маршрут.`;
 
-  const text = "Your text goes here"; // Replace
+  const text = 'Your text goes here'; // Replace
   return (
     <div className="welcome-wrapper">
       {!startWriting && (
@@ -46,14 +46,16 @@ const WelcomeComponent = () => {
             type="audio/mp3"
             volume={1}
             playIcon={<button className="play">Play</button>}
-            light={<OutlineSubmitButton title="Старт ?? ?" />}
+            light={
+              <OutlineSubmitButton title="Включите звук телефона погромче и начнем! ?? ?" />
+            }
             onStart={() => {
               setTimeout(() => {
                 setStartWriting(true);
               }, 1000);
             }}
             onEnded={() => {
-              console.log("ended");
+              console.log('ended');
               setTimeout(() => {
                 setNextStep(true);
               }, 2000);
