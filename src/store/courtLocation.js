@@ -1,4 +1,5 @@
-export const puzzleAboutLoccation = {
+export const courtLocation ={
+ puzzleAboutLoccation :{
   id: 1,
   puzzleText: `Следующая локация связана со спортом. Первый мяч для этой игры был сделан из дерева. 
     Назовите этот спорт`,
@@ -33,11 +34,11 @@ export const puzzleAboutLoccation = {
       filePath: '',
     },
   ],
-};
-export const qRCode = {
+},
+ qRCode : {
   filePath: ``,
-};
-export const puzzlePrevMain = {
+},
+ puzzlePrevMain : {
   id: 1,
   puzzleText: `Поздравляем! Вы прибыли на локацию номер два. 
     Посчитайте секции забора со стороны парковки. Сколько их?`,
@@ -112,4 +113,5 @@ export const puzzleMain = {
       filePath: '',
     },
   ],
-};
+}
+}
