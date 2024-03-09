@@ -5,8 +5,8 @@ export const schoolLoccation = {
     Вы говорили такие слова? Вспоминайте!”`,
     puzzleFilePath: `/locationSchool/part-1.mp4`,
     video: '',
-    discription_text: ``,
-    discription_filePath: ``,
+    description_text: ``,
+    description_filePath: ``,
     answer: '',
     rightAnswer: [
       'языковая школа',
@@ -16,8 +16,8 @@ export const schoolLoccation = {
       'школа английского языка',
     ],
     done: false,
-    last_discription_text: `Ответ верный. Капитан, ведите свою команду к этой локации`,
-    last_discription_filePath: `/locationSchool/part-2.mp3`,
+    last_description_text: `Ответ верный. Капитан, ведите свою команду к этой локации`,
+    last_description_filePath: `/locationSchool/part-2.mp3`,
     clues: [
       {
         id: '1',
@@ -39,7 +39,7 @@ export const schoolLoccation = {
       },
     ],
   },
-  QRCode: {
+  RCode: {
     filePath: ``,
   },
   puzzlePrevMain: {
@@ -47,13 +47,13 @@ export const schoolLoccation = {
     puzzleText: `Посчитайте квадратные ячейки слева от входа в школу (если стоять лицом ко входу)`,
     puzzleFilePath: ``,
     video: '',
-    discription_text: ``,
-    discription_filePath: ``,
+    description_text: ``,
+    description_filePath: ``,
     answer: '',
     rightAnswer: ['33'],
     done: false,
-    last_discription_text: ``,
-    last_discription_filePath: ``,
+    last_description_text: ``,
+    last_description_filePath: ``,
     clues: [
       {
         id: '1',
@@ -84,14 +84,14 @@ export const schoolLoccation = {
     `,
     puzzleFilePath: ``,
     video: '',
-    discription_text: ``,
-    discription_filePath: ``,
+    description_text: ``,
+    description_filePath: ``,
     answer: '',
     rightAnswer: ['Жить вечно'],
     done: false,
-    last_discription_text: `“Жить вечно” - в этом, по мнению «Google Artificial Intelligence Bot» 
+    last_description_text: `“Жить вечно” - в этом, по мнению «Google Artificial Intelligence Bot» 
     заключается смысл жизни.`,
-    last_discription_filePath: `/locationSchool/part-5.mp3`,
+    last_description_filePath: `/locationSchool/part-5.mp3`,
     clues: [
       {
         id: '1',
