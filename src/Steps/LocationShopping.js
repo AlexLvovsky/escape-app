@@ -6,7 +6,7 @@ import QrCode from "../Shared/QrCode/QrCode";
 import SingleTaskPuzzle from "../Shared/Single/SingleTaskPuzzle";
 import OutlineSubmitButton from "../Shared/Buttons/OutlineSubmitButton";
 
-const LocationHome = (props) => {
+const LocationShopping = (props) => {
   const dispatch = useDispatch();
   const { currentSubStep } = useSelector((state) => state);
 
@@ -40,7 +40,7 @@ const LocationHome = (props) => {
             <OutlineSubmitButton
               onClick={dispatch(
                 setCurrentStep({
-                  currentStep: steps.tennis,
+                  currentStep: steps.school,
                   subStep: subSteps.about_location,
                 })
               )}
@@ -52,4 +52,4 @@ const LocationHome = (props) => {
   };
   return <div>{renderData()}</div>;
 };
-export default LocationHome;
+export default LocationShopping;

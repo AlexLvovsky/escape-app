@@ -71,7 +71,7 @@ const initialState = {
   names: [],
   playersObject: {},
   currentStep: steps.home,
-  currentSubStep: subSteps.about_location,
+  subStep: subSteps.about_location,
   count: "",
   winnerName: null,
   winnerIndex: null,
@@ -105,10 +105,10 @@ export const appStore = createSlice({
     },
     setCurrentStep: (state, action) => {
       state.currentStep = action.payload.currentStep;
-      state.currentStep = action.payload.subStep || subSteps.undefined;
+      state.subStep = action.payload.subStep || subSteps.undefined;
     },
     setSubStep: (state, action) => {
-      state.currentStep = action.payload;
+      state.subStep = action.payload;
     },
     findWinner: (state, action) => {
       const playersObject = state.names.map((item) => ({ option: item }));

@@ -6,4 +6,8 @@
   &.small {
     min-width: 150px !important;
   }
+  &.extra-small {
+    min-width: 10px !important;
+    width: 30px;
+  }
 }
