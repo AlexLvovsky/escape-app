@@ -202,7 +202,7 @@ const SingleTaskPuzzle = (props) => {
           </div>
           {/* )} */}
         </div>
-        {puzzleData.last_discription_text && (
+        {puzzleData.last_discription_text && puzzleData.done && (
           <div className="last-description">
             {startWritingLastDescription && (
               <div className="text">

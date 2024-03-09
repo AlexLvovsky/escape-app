@@ -12,11 +12,14 @@ import MultiTaskingPuzzle from "../Shared/Multi/MultiTaskingPuzzle";
 import SingleTaskPuzzle from "../Shared/Single/SingleTaskPuzzle";
 import { poetryPuzzleData, location1 } from "../store/puzzlesData";
 import { homeLocationData } from "../store/homeLocation";
+import { lastLoccation } from "../store/lastLocation";
 import LocationHome from "./LocationHome";
 import LocationTennis from "./LocationTennis";
+import LastLocation from "./LastLocation";
 
 const MainAppComponent = () => {
   const { currentStep, loader } = useSelector((state) => state);
+  console.log(lastLoccation);
 
   const getCurrentStep = () => {
     switch (currentStep) {
@@ -37,7 +40,8 @@ const MainAppComponent = () => {
         return <LocationHome data={homeLocationData} />;
       case steps.tennis:
         return <LocationTennis data={homeLocationData} />;
-
+      case steps.end:
+        return <LastLocation data={lastLoccation} />;
       default:
         console.log(`Sorry, we are out of the game.`);
     }

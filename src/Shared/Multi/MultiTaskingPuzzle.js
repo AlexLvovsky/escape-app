@@ -4,12 +4,17 @@ import { Box } from "@mui/material";
 import { checkRightAnswer } from "../../store/appStore";
 import Lottie from "lottie-react";
 import right from "../../media/animations/right.json";
+import unlike from "../../media/animations/unlike.json";
 import help from "../../media/icons/help.svg";
 import ModalComponent from "../Modal/ModalComponent";
 import { useSelector, useDispatch } from "react-redux";
 import { openModal, openNestedModal } from "../../store/appStore";
 import { modalCauses } from "../../store/enum";
 import NestedModal from "../Modal/NestedModalComponent";
+import OutlineSubmitButton from "../../Shared/Buttons/OutlineSubmitButton";
+import Typewriter from "../../Shared/TypeWritter/TypeWritter";
+import ReactPlayer from "react-player";
+import naale from "../../media/photoAndVideo/naale.mp4";
 
 const ClueData = (props) => {
   console.log(props);
@@ -33,10 +38,37 @@ const MultiTaskingPuzzle = (props) => {
 
   const [puzzleData, setPuzzleData] = useState(props.data);
   const [activePuzzleId, setActivePuzzleId] = useState(null);
+  const [startWritingLastDescription, setStartWritingLastDescription] =
+    useState(false);
+  const [bottomButton, setBottomButton] = useState(false);
+  const [showIncorrectAnswer, setShowIncorrectAnswer] = useState([]);
+  const [lastDescription, setLastDescription] = useState(null);
+  const [submitPlayingLastDescription, setSubmitPlayingLastDescription] =
+    useState(false);
+
+  useEffect(() => {
+    const lastDescription = props.data.find((puzzle) => {
+      return puzzle.last_description_text !== "";
+    });
+    if (!lastDescription) {
+      setBottomButton(true);
+    } else {
+      const lastDescriptionData = {
+        text: lastDescription.last_description_text,
+        audio: lastDescription.last_description_filePath,
+      };
+      setLastDescription(lastDescriptionData);
+    }
+  }, []);
   useEffect(() => {
     const puzzlesCount = puzzleData.length;
     const doneCount = puzzleData.filter((item) => item.done === true);
     if (puzzlesCount == doneCount.length) {
+      if (lastDescription) {
+        setSubmitPlayingLastDescription(true);
+      } else {
+        setBottomButton(true);
+      }
       //onPuzzleCompleted callback
       //props.onPuzzleCompleted();
       console.log("all puzzles are completed");
@@ -111,53 +143,77 @@ const MultiTaskingPuzzle = (props) => {
     }
     return "";
   };
+  const handleAddIcon = (id) => {
+    setShowIncorrectAnswer((prevArray) => [...prevArray, id]);
+  };
+  const handleRemoveIcon = (id) => {
+    setShowIncorrectAnswer((prevArray) =>
+      prevArray.filter((item, index) => item !== id)
+    );
+  };
 
   const renderItem = (puzzle) => {
     return (
       <div className="puzzle-item">
-        {puzzle.text && (
-          <div
-            className="puzzle-text left"
-            dangerouslySetInnerHTML={{ __html: puzzle.text }}
-          />
-        )}
-        {puzzle.fileName && (
-          <div className="puzzle-image">
-            <img src={`/${puzzle.fileName}`} alt="" />
-          </div>
-        )}
-        <Box
-          key={puzzle.id}
-          component="form"
-          sx={{
-            "& .MuiTextField-root": { m: 1, width: "320px" },
-          }}
-          autoComplete="off"
-        >
-          <div className="answer-input-wrapper">
-            <div className="clues-wrapper">
-              <div className="" onClick={() => helpRequest(puzzle.id)}>
-                <img src={help} />
-              </div>
-            </div>
-
-            <OwnTextFieldInput
-              id="outlined-basic"
-              label={"Ваш ответ"}
-              variant="outlined"
-              onChange={(e) => onInputChange(e.target.value, puzzle.id)}
-              value={puzzle.answer}
+        <div className="puzzle-data">
+          {puzzle.puzzleText && (
+            <div
+              className="puzzle-text left"
+              dangerouslySetInnerHTML={{ __html: puzzle.puzzleText }}
             />
-            {puzzle.done && (
-              <div className="right-answer-animation">
-                <Lottie animationData={right} />
+          )}
+          {puzzle.puzzleFilePath && (
+            <div className="puzzle-image">
+              <img src={`/${puzzle.puzzleFilePath}`} alt="" />
+            </div>
+          )}
+          <Box
+            key={puzzle.id}
+            component="form"
+            sx={{
+              "& .MuiTextField-root": { m: 1, width: "320px" },
+            }}
+            autoComplete="off"
+          >
+            <div className="answer-input-wrapper">
+              <div className="clues-wrapper">
+                <div className="" onClick={() => helpRequest(puzzle.id)}>
+                  <img src={help} />
+                </div>
               </div>
-            )}
-            {puzzle.clues.map((clue) => {
-              return <div>{clue.used && <ClueData clueData={clue} />}</div>;
-            })}
-          </div>
-        </Box>
+              <div className="answer-form">
+                <OwnTextFieldInput
+                  id="outlined-basic"
+                  label={"Ваш ответ"}
+                  variant="outlined"
+                  onChange={(e) => {
+                    handleRemoveIcon(puzzle.id);
+                    onInputChange(e.target.value, puzzle.id);
+                  }}
+                  value={puzzle.answer}
+                />
+                <OutlineSubmitButton
+                  title="?"
+                  className="extra-small "
+                  onClick={() => handleAddIcon(puzzle.id)}
+                />
+              </div>
+              {puzzle.done && (
+                <div className="right-answer-animation">
+                  <Lottie animationData={right} />
+                </div>
+              )}
+              {showIncorrectAnswer.includes(puzzle.id) && (
+                <div className="right-answer-animation">
+                  <Lottie animationData={unlike} />
+                </div>
+              )}
+              {puzzle.clues.map((clue) => {
+                return <div>{clue.used && <ClueData clueData={clue} />}</div>;
+              })}
+            </div>
+          </Box>
+        </div>
       </div>
     );
   };
@@ -172,6 +228,46 @@ const MultiTaskingPuzzle = (props) => {
           </div>
         );
       })}
+      {submitPlayingLastDescription && (
+        <div className="last-description">
+          {lastDescription && (
+            <>
+              {console.log(lastDescription)}
+              {startWritingLastDescription && (
+                <div className="text">
+                  <Typewriter text={lastDescription.text} delay={75} />
+                </div>
+              )}
+              <ReactPlayer
+                url={lastDescription.audio}
+                width="100%"
+                height="1px"
+                controls={false}
+                playing={true}
+                muted={false}
+                type="audio/mp3"
+                volume={1}
+                playIcon={<button className="play">Play</button>}
+                light={<OutlineSubmitButton title="Далее" />}
+                onStart={() => {
+                  setTimeout(() => {
+                    setStartWritingLastDescription(true);
+                  }, 1000);
+                }}
+                onEnded={() => {
+                  setBottomButton(true);
+                }}
+              />
+            </>
+          )}
+          {bottomButton && (
+            <OutlineSubmitButton
+              onClick={props.onBottomButtonClick}
+              title={props.bottomButtonText}
+            />
+          )}
+        </div>
+      )}
       {modal && (
         <ModalComponent
           open={modal}
