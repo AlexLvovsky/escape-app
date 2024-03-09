@@ -3,38 +3,38 @@ export const puzzleAboutLoccation = {
   puzzleText: `Следующая локация связана со спортом. Первый мяч для этой игры был сделан из дерева. 
     Назовите этот спорт`,
   puzzleFilePath: ``,
-  video: "",
-  discription_text: ``,
-  discription_filePath: ``,
-  answer: "",
-  rightAnswer: ["теннис"],
+  video: '',
+  description_text: ``,
+  description_filePath: ``,
+  answer: '',
+  rightAnswer: ['теннис'],
   done: false,
-  last_discription_text: `В начале истории тенниса использовались деревянные мячи. 
+  last_description_text: `В начале истории тенниса использовались деревянные мячи. 
     Современный теннисный мяч изготавливается из каучука. 
     Ваше следующее задание находится здесь.`,
-  last_discription_filePath: `/locationCourt/part-1.mp3`,
+  last_description_filePath: `/locationCourt/part-1.mp3`,
   clues: [
     {
-      id: "1",
+      id: '1',
       used: false,
-      text: "",
-      filePath: "",
+      text: '',
+      filePath: '',
     },
     {
-      id: "2",
+      id: '2',
       used: false,
-      text: "",
-      filePath: "",
+      text: '',
+      filePath: '',
     },
     {
-      id: "3",
+      id: '3',
       used: false,
-      text: "",
-      filePath: "",
+      text: '',
+      filePath: '',
     },
   ],
 };
-export const QRCode = {
+export const qRCode = {
   filePath: ``,
 };
 export const puzzlePrevMain = {
@@ -42,32 +42,32 @@ export const puzzlePrevMain = {
   puzzleText: `Поздравляем! Вы прибыли на локацию номер два. 
     Посчитайте секции забора со стороны парковки. Сколько их?`,
   puzzleFilePath: ``,
-  video: "",
-  discription_text: ``,
-  discription_filePath: ``,
-  answer: "",
-  rightAnswer: ["12"],
+  video: '',
+  description_text: ``,
+  description_filePath: ``,
+  answer: '',
+  rightAnswer: ['12'],
   done: false,
-  last_discription_text: ``,
-  last_discription_filePath: ``,
+  last_description_text: ``,
+  last_description_filePath: ``,
   clues: [
     {
-      id: "1",
+      id: '1',
       used: false,
-      text: "",
-      filePath: "",
+      text: '',
+      filePath: '',
     },
     {
-      id: "2",
+      id: '2',
       used: false,
-      text: "",
-      filePath: "",
+      text: '',
+      filePath: '',
     },
     {
-      id: "3",
+      id: '3',
       used: false,
-      text: "",
-      filePath: "",
+      text: '',
+      filePath: '',
     },
   ],
 };
@@ -81,35 +81,35 @@ export const puzzleMain = {
     Кстати, к Цезарю это задание имеет прямое отношение. <br /><br />
     <b>«Нгуо Жйзугффл» - ?</b>`,
   puzzleFilePath: ``,
-  video: "",
-  discription_text: ``,
-  discription_filePath: ``,
-  answer: "",
-  rightAnswer: ["Карл Джерасси"],
+  video: '',
+  description_text: ``,
+  description_filePath: ``,
+  answer: '',
+  rightAnswer: ['Карл Джерасси'],
   done: false,
-  last_discription_text: `Карл Джерасси - это американский ученый, 
+  last_description_text: `Карл Джерасси - это американский ученый, 
   который разработал программу DENDRAL, она могла автоматически обнаруживать новые формы лекарств. 
   Кстати, этот же ученый разработал таблетку контроля над рождаемостью.”`,
-  last_discription_filePath: `/locationCourt/part-2.mp3`,
+  last_description_filePath: `/locationCourt/part-2.mp3`,
   clues: [
     {
-      id: "1",
+      id: '1',
       used: false,
       text: `«Егр Ёсё» - Ван Гог<br />«Грхсрлс Елегояжл» - Антонио Вивальди`,
-      filePath: "",
+      filePath: '',
     },
     {
-      id: "2",
+      id: '2',
       used: false,
       text: `Каждая буква сдвинута на определенное количество букв в алфавите.
        Открой алфавит и посчитай на сколько.`,
-      filePath: "",
+      filePath: '',
     },
     {
-      id: "3",
+      id: '3',
       used: false,
       text: `Каждая буква сдвинута на 3 буквы алфавита вперед`,
-      filePath: "",
+      filePath: '',
     },
   ],
 };

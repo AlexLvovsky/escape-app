@@ -6,19 +6,19 @@ export const baazarLoccation = {
     а также стимулировали развитие ремесла и торговли. Что же это - «они»?`,
     puzzleFilePath: ``,
     video: '',
-    discription_text: ``,
-    discription_filePath: ``,
+    description_text: ``,
+    description_filePath: ``,
     answer: '',
     rightAnswer: ['Ярмарки', 'Ярмарка', 'Рынки', 'базар'],
     done: false,
-    last_discription_text: `Ярмарки в прошлом были значимыми событиями, 
+    last_description_text: `Ярмарки в прошлом были значимыми событиями, 
     проводимыми один или несколько раз в году в различных городах. Сейчас же они могут устраиваться 
     даже раз в неделю, что, возможно, свидетельствует о потребности людей в более частых 
     встречах — очередное отличие людей от ИИ, которому встречи абсолютно не нужны.<br />
 
     Направляйтесь на место, где в Куинстауне проходят ярмарки каждую субботу. 
     По информации от спутников Space X, капитан команды также был замечен на этом мероприятии.`,
-    last_discription_filePath: `/locationBaazar/part-1.mp3`,
+    last_description_filePath: `/locationBaazar/part-1.mp3`,
     clues: [
       {
         id: '1',
@@ -40,7 +40,7 @@ export const baazarLoccation = {
       },
     ],
   },
-  QRCode: {
+  qRCode: {
     filePath: ``,
   },
   puzzlePrevMain: {
@@ -48,13 +48,13 @@ export const baazarLoccation = {
     puzzleText: `Посчитайте колышки вокруг березы, ну или ивы. Сами решайте, что это такое. Сколько их?`,
     puzzleFilePath: ``,
     video: '',
-    discription_text: ``,
-    discription_filePath: ``,
+    description_text: ``,
+    description_filePath: ``,
     answer: '',
     rightAnswer: ['9'],
     done: false,
-    last_discription_text: ``,
-    last_discription_filePath: ``,
+    last_description_text: ``,
+    last_description_filePath: ``,
     clues: [
       {
         id: '1',
@@ -87,14 +87,14 @@ export const baazarLoccation = {
     <br /> <b>"242663445 45437"</b>`,
     puzzleFilePath: ``,
     video: '',
-    discription_text: ``,
-    discription_filePath: ``,
+    description_text: ``,
+    description_filePath: ``,
     answer: '',
     rightAnswer: ['Властелин Колец'],
     done: false,
-    last_discription_text: `Программный пакет назывался MASSIVE, 
+    last_description_text: `Программный пакет назывался MASSIVE, 
     а использовался он для создания боевых сцен в фильмах «Властелин колец».`,
-    last_discription_filePath: `/locationBaazar/part-2.mp3`,
+    last_description_filePath: `/locationBaazar/part-2.mp3`,
     clues: [
       {
         id: '1',

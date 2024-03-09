@@ -5,18 +5,18 @@ export const childLocation = {
      в отличие от нас, умеет дышать и глотать одновременно. Кто же это?`,
     puzzleFilePath: ``,
     video: '',
-    discription_text: ``,
-    discription_filePath: ``,
+    description_text: ``,
+    description_filePath: ``,
     answer: '',
     rightAnswer: ['дети', 'ребенок', 'младенец', 'новорожденый', 'младенцы'],
     done: false,
-    last_discription_text: `До 7-9 месяцев дети действительно способны одновременно дышать и глотать, 
+    last_description_text: `До 7-9 месяцев дети действительно способны одновременно дышать и глотать, 
   благодаря особенностям анатомии гортани. У младенцев в первые месяцы жизни гортань 
   расположена значительно выше, чем у взрослых, и лишь со временем опускается в своё нормальное 
   положение. Это позволяет новорождённым без труда глотать и одновременно дышать через нос. 
   Согласно статистическим данным GPS вашего телефона, именно в этом парке капитан часто проводит время 
   со своим ребёнком.`,
-    last_discription_filePath: `/locationChild/part-1.mp3`,
+    last_description_filePath: `/locationChild/part-1.mp3`,
     clues: [
       {
         id: '1',
@@ -38,7 +38,7 @@ export const childLocation = {
       },
     ],
   },
-  QRCode: {
+  qRCode: {
     filePath: ``,
   },
   puzzlePrevMain: {
@@ -46,13 +46,13 @@ export const childLocation = {
     puzzleText: `Найдите конструкцию напоминающую Стоунхендж. Посчитайте столбы, сколько их`,
     puzzleFilePath: ``,
     video: '',
-    discription_text: ``,
-    discription_filePath: ``,
+    description_text: ``,
+    description_filePath: ``,
     answer: '',
     rightAnswer: ['8'],
     done: false,
-    last_discription_text: ``,
-    last_discription_filePath: ``,
+    last_description_text: ``,
+    last_description_filePath: ``,
     clues: [
       {
         id: '1',
@@ -82,13 +82,13 @@ export const childLocation = {
   Сложно представить человеческую жизнь без этих изобретений`,
       puzzleFilePath: ``,
       video: '',
-      discription_text: ``,
-      discription_filePath: ``,
+      description_text: ``,
+      description_filePath: ``,
       answer: '',
       rightAnswer: ['', ''],
       done: false,
-      last_discription_text: ``,
-      last_discription_filePath: ``,
+      last_description_text: ``,
+      last_description_filePath: ``,
       clues: [
         {
           id: '1',
@@ -115,13 +115,13 @@ export const childLocation = {
       puzzleText: ``,
       puzzleFilePath: ``,
       video: '',
-      discription_text: ``,
-      discription_filePath: ``,
+      description_text: ``,
+      description_filePath: ``,
       answer: '',
       rightAnswer: ['', ''],
       done: false,
-      last_discription_text: ``,
-      last_discription_filePath: ``,
+      last_description_text: ``,
+      last_description_filePath: ``,
       clues: [
         {
           id: '1',
@@ -148,13 +148,13 @@ export const childLocation = {
       puzzleText: ``,
       puzzleFilePath: ``,
       video: '',
-      discription_text: ``,
-      discription_filePath: ``,
+      description_text: ``,
+      description_filePath: ``,
       answer: '',
       rightAnswer: ['', ''],
       done: false,
-      last_discription_text: ``,
-      last_discription_filePath: ``,
+      last_description_text: ``,
+      last_description_filePath: ``,
       clues: [
         {
           id: '1',
@@ -181,13 +181,13 @@ export const childLocation = {
       puzzleText: ``,
       puzzleFilePath: ``,
       video: '',
-      discription_text: ``,
-      discription_filePath: ``,
+      description_text: ``,
+      description_filePath: ``,
       answer: '',
       rightAnswer: ['', ''],
       done: false,
-      last_discription_text: ``,
-      last_discription_filePath: ``,
+      last_description_text: ``,
+      last_description_filePath: ``,
       clues: [
         {
           id: '1',
@@ -214,13 +214,13 @@ export const childLocation = {
       puzzleText: ``,
       puzzleFilePath: ``,
       video: '',
-      discription_text: ``,
-      discription_filePath: ``,
+      description_text: ``,
+      description_filePath: ``,
       answer: '',
       rightAnswer: ['', ''],
       done: false,
-      last_discription_text: ``,
-      last_discription_filePath: ``,
+      last_description_text: ``,
+      last_description_filePath: ``,
       clues: [
         {
           id: '1',
@@ -247,13 +247,13 @@ export const childLocation = {
       puzzleText: ``,
       puzzleFilePath: ``,
       video: '',
-      discription_text: ``,
-      discription_filePath: ``,
+      description_text: ``,
+      description_filePath: ``,
       answer: '',
       rightAnswer: ['', ''],
       done: false,
-      last_discription_text: `Поздравляем! Все слова отгаданы`,
-      last_discription_filePath: ``,
+      last_description_text: `Поздравляем! Все слова отгаданы`,
+      last_description_filePath: ``,
       clues: [
         {
           id: '1',
