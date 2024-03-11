@@ -70,7 +70,7 @@ const initialState = {
   teemName: null,
   names: [],
   playersObject: {},
-  currentStep: steps.players,
+  currentStep: steps.welcome,
   subStep: subSteps.about_location,
   count: "",
   winnerName: null,
