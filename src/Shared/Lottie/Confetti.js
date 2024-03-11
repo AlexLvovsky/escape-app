@@ -5,7 +5,7 @@ import Lottie from "lottie-react";
 const Confetti = () => {
   const myStyle = {
     position: "absolute",
-    top: "0",
+    //top: "0",
     left: "0",
     bottom: "0",
     width: "100%",

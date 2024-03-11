@@ -31,4 +31,8 @@ export const introduction = {
 
   Вы готовы принять вызов?`,
   audio5: `/introduction/part-5.mp3`,
+  text6: `tut doljen bit' text kotoriy obyasnit chto sistema viberet odnogo iz vas i bka bla a to neponyatno nihrena s hrena tut ruletka`, //tut text
+  audio6: `/introduction/part-4.mp3`, //tut audio
+  text7: ` tut o tom chto ona diljna vvesti nekotorie dannie kotorie neobhodimi v vipolnenii vajnoy missii po spaseniyu chelovechectva`, //tut text
+  audio7: `/introduction/part-4.mp3`, //tut audio
 };

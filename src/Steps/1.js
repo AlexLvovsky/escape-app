@@ -10,8 +10,7 @@ import {
   setTeemName,
 } from "../store/appStore";
 import { TextField, Box } from "@mui/material";
-import { steps, errorType } from "../store/enum";
-import { errors } from "../store/variables";
+import { steps } from "../store/enum";
 import OwnTextFieldInput from "../Shared/WhiteTextField";
 import ModalComponent from "../Shared/Modal/ModalComponent";
 import OutlineSubmitButton from "../Shared/Buttons/OutlineSubmitButton";
@@ -26,10 +25,16 @@ const PlayersComponent = () => {
   const { count, names, winnerName, error, errorData, modal, teemName } =
     useSelector((state) => state);
   const [playerCountInput, setPlayerCountInput] = useState(count);
-  const [showBottomButton, setShowBottomButton] = useState(false);
+  const [confirmed, setConfirmed] = useState(false);
+  const [showConfirmedButton, setShowConfirmedButton] = useState(false);
   const [startWritingLastDescription, setStartWritingLastDescription] =
     useState(false);
-  const modalError = errors.find((e) => e.type === errorType.no_winner);
+
+  useEffect(() => {
+    if (winnerName) {
+      dispatch(setCurrentStep({ currentStep: steps.wheel }));
+    }
+  }, [winnerName]);
 
   useEffect(() => {
     if (error) {
@@ -46,7 +51,6 @@ const PlayersComponent = () => {
   const handleNameChange = (e, index) => {
     const newName = e.target.value;
     dispatch(setName({ index, name: newName }));
-    dispatch(findWinner());
   };
   const handleClose = () => {
     dispatch(openModal(false));
@@ -87,9 +91,50 @@ const PlayersComponent = () => {
               required
             />
           </div>
-        </Box>
+          {playerCountInput && !confirmed && startWritingLastDescription && (
+            <div className="text">
+              <Typewriter text={introduction.text6} delay={60} />
+            </div>
+          )}
 
-        {playerCountInput && (
+          {playerCountInput && (
+            <div className="welcome-player-button">
+              <ReactPlayer
+                url={introduction.audio6}
+                width="100%"
+                height="1px"
+                controls={false}
+                playing={true}
+                muted={false}
+                type="audio/mp3"
+                volume={1}
+                playIcon={<button className="play">Play</button>}
+                light={<OutlineSubmitButton title="Далее" className="w-100" />}
+                onStart={() => {
+                  setTimeout(() => {
+                    setStartWritingLastDescription(true);
+                  }, 1000);
+                }}
+                onEnded={() => {
+                  setTimeout(() => {
+                    setShowConfirmedButton(true);
+                  }, 1000);
+                }}
+              />
+            </div>
+          )}
+        </Box>
+        {showConfirmedButton && !confirmed && (
+          // <div className="puzzle-item-bottom-button">
+          <OutlineSubmitButton
+            onClick={() => setConfirmed(true)}
+            title={"OK"}
+            className=""
+          />
+          // </div>
+        )}
+
+        {playerCountInput && confirmed && (
           <Box
             component="form"
             sx={{
@@ -111,66 +156,21 @@ const PlayersComponent = () => {
                   />
                 </div>
               ))}
-              {startWritingLastDescription && (
-                <div className="text">
-                  <Typewriter text={introduction.text6} delay={60} />
-                </div>
-              )}
-              {winnerName ? (
-                <div className="">
-                  <ReactPlayer
-                    url={introduction.audio6}
-                    width="100%"
-                    height="1"
-                    controls={false}
-                    playing={true}
-                    muted={false}
-                    type="audio/mp3"
-                    volume={1}
-                    playIcon={<button className="play">Play</button>}
-                    light={
-                      <OutlineSubmitButton title="Далее" className="w-100" />
-                    }
-                    onStart={() => {
-                      setTimeout(() => {
-                        setStartWritingLastDescription(true);
-                      }, 1000);
-                    }}
-                    onEnded={() => {
-                      setTimeout(() => {
-                        setShowBottomButton(true);
-                      }, 1000);
-                    }}
-                  />
-                </div>
-              ) : (
-                <OutlineSubmitButton
-                  onClick={() => {
-                    //dispatch(findWinner());
-                    dispatch(openModal(true));
-                  }}
-                  title="Далее"
-                  className="w-100"
-                />
-              )}
-            </div>
-            {showBottomButton && (
               <OutlineSubmitButton
                 onClick={() => {
-                  dispatch(setCurrentStep({ currentStep: steps.wheel }));
+                  dispatch(findWinner());
                 }}
-                title="Далее"
-                className=""
+                title="Send"
               />
-            )}
+            </div>
           </Box>
         )}
       </div>
       <ModalComponent
         open={modal}
         handleClose={handleClose}
-        title={modalError?.title}
-        text={modalError?.text}
+        title={errorData?.title}
+        text={errorData?.text}
       />
     </div>
   );

@@ -13,6 +13,9 @@ import { TextField, Button } from "@mui/material";
 import { steps } from "../store/enum";
 import OutlineSubmitButton from "../Shared/Buttons/OutlineSubmitButton";
 import Confetti from "../Shared/Lottie/Confetti";
+import ReactPlayer from "react-player";
+import Typewriter from "../Shared/TypeWritter/TypeWritter";
+import { introduction } from "../store/introduction";
 
 const WheelComponent = () => {
   const dispatch = useDispatch();
@@ -27,22 +30,45 @@ const WheelComponent = () => {
     showWheel,
     deleteWheel,
   } = useSelector((state) => state);
+  const [showPlayerButton, setShowPlayerButton] = useState(false);
+  const [showBottomButton, setShowBottomButton] = useState(false);
+  const [startWritingLastDescription, setStartWritingLastDescription] =
+    useState(false);
 
+  // const onStopSpinning = () => {
+  //   dispatch(setConfetti(true));
+  //   setTimeout(() => {
+  //     dispatch(setShowWheel(false));
+  //     setTimeout(() => {
+  //       dispatch(setDeleteWheel(true));
+  //       setTimeout(() => {
+  //         //dispatch(setShowText(true));
+  //         setShowPlayerButton(true);
+  //       }, 2000);
+  //     }, 2000);
+  //   }, 7000);
+  // };
   const onStopSpinning = () => {
     dispatch(setConfetti(true));
     setTimeout(() => {
-      dispatch(setShowWheel(false));
-      setTimeout(() => {
-        dispatch(setDeleteWheel(true));
-        setTimeout(() => {
-          dispatch(setShowText(true));
-        }, 2000);
-      }, 2000);
-    }, 7000);
+      // dispatch(setShowWheel(false));
+      setShowPlayerButton(true);
+      // setTimeout(() => {
+      //   dispatch(setDeleteWheel(true));
+      //   setTimeout(() => {
+      //     //dispatch(setShowText(true));
+      //     setShowPlayerButton(true);
+      //   }, 2000);
+      // }, 2000);
+    }, 5000);
   };
 
   return (
-    <div className="wheel-step centered">
+    <div
+      className={`wheel-step ${
+        !startWritingLastDescription ? "centered1" : ""
+      }`}
+    >
       {confetti && <Confetti />}
       {!deleteWheel && (
         <div className={`wheel-wrapper ${!showWheel ? "fade-out" : ""}`}>
@@ -56,8 +82,7 @@ const WheelComponent = () => {
               onStopSpinning={onStopSpinning}
             />
           </div>
-
-          <div>
+          {!showPlayerButton && (
             <OutlineSubmitButton
               disabled={spin}
               onClick={() => {
@@ -65,10 +90,55 @@ const WheelComponent = () => {
               }}
               title="Поехали!"
             />
-          </div>
+          )}
         </div>
       )}
-      {showText && (
+      {showPlayerButton && (
+        <div className="">
+          <ReactPlayer
+            url={introduction.audio7}
+            width="100%"
+            height="1"
+            controls={false}
+            playing={true}
+            muted={false}
+            type="audio/mp3"
+            volume={1}
+            playIcon={<button className="play">Play</button>}
+            light={<OutlineSubmitButton title="Далее" className="w-100" />}
+            onStart={() => {
+              setTimeout(() => {
+                dispatch(setDeleteWheel(true));
+                setStartWritingLastDescription(true);
+
+                // dispatch(setShowWheel(false));
+              }, 1000);
+            }}
+            onEnded={() => {
+              setTimeout(() => {
+                setShowBottomButton(true);
+              }, 3000);
+            }}
+          />
+        </div>
+      )}
+
+      <div>
+        {startWritingLastDescription && (
+          <div className="text">
+            <Typewriter text={introduction.text7} delay={60} />
+          </div>
+        )}
+      </div>
+      {showBottomButton && (
+        <OutlineSubmitButton
+          onClick={() => {
+            dispatch(setCurrentStep({ currentStep: steps.winner_data }));
+          }}
+          title="Я согласен быть избранным!"
+        />
+      )}
+      {/* {showText && (
         <div className="text fade-in">
           <div className="text-title">{winnerName}</div>
           <div className="text-description">
@@ -85,7 +155,7 @@ const WheelComponent = () => {
             />
           </div>
         </div>
-      )}
+      )} */}
     </div>
   );
 };

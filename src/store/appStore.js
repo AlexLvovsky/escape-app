@@ -70,7 +70,7 @@ const initialState = {
   teemName: null,
   names: [],
   playersObject: {},
-  currentStep: steps.welcome,
+  currentStep: steps.players,
   subStep: subSteps.about_location,
   count: "",
   winnerName: null,
@@ -131,9 +131,8 @@ export const appStore = createSlice({
         state.winnerName = winnerOption;
         state.winnerIndex = winnerIndex;
       } else {
-        state.error = true;
-        state.errorType = errorType.no_winner;
-        state.errorData = errors.find((e) => e.type === errorType.no_winner);
+        state.winnerName = null;
+        state.winnerIndex = null;
       }
     },
     setLoading: (state, action) => {
