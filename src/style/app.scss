@@ -14,10 +14,16 @@ body {
   color: $text;
   position: relative;
   max-width: 600px;
-  // background-image: url("../../public/background/28.png");
-  // background-size: 100%;
-  // background-repeat: no-repeat;
-  // background-position-y: bottom;
+  background-image: url("../../public/background/28-2.png"),
+    url("../../public/background/29-1.png");
+  background-position: left top, right bottom;
+  background-size: 25%, 50%;
+  background-repeat: no-repeat, no-repeat;
+  .css-1vbvugf-MuiButtonBase-root-MuiButton-root {
+    color: #55e1fb;
+    font-weight: 600;
+    border: 2px solid #55e1fb;
+  }
   .border {
     height: 1px;
     border-bottom: 1px solid $medium-blue;
@@ -33,6 +39,7 @@ body {
     max-width: 600px;
     padding: 20px 15px;
     text-align: left;
+    font-weight: bolder;
   }
   .bike-animation {
     position: absolute;
@@ -77,8 +84,13 @@ body {
   .css-1hag5lt .MuiTextField-root {
     margin: 8px 0;
   }
+  .welcome-wrapper {
+    h3 {
+      color: #55e1fb;
+    }
+  }
   .welcome-player-button {
-    margin-top: 100px;
+    margin-top: 15px;
     &.m-0 {
       margin-top: 0;
     }

@@ -28,16 +28,22 @@ const WelcomeComponent = () => {
       )}
       {startWriting && !startWriting2 && (
         <div className="text">
-          <Typewriter text={introduction.text1} delay={65} />
+          <Typewriter text={introduction.text1} delay={60} />
         </div>
       )}
       {startWriting2 && (
         <div className="text">
-          <Typewriter text={introduction.text2} delay={65} />
+          <Typewriter text={introduction.text2} delay={60} />
         </div>
       )}
       {!nextStep && !startWriting2 && (
         <div className="welcome-player-button">
+          {!startWriting && (
+            <div>
+              <h5>Включите звук телефона погромче!</h5>
+              <h4>Вы готовы начать?</h4>
+            </div>
+          )}
           <ReactPlayer
             url={"/introduction/part-1.mp3"}
             width="100%"
@@ -48,9 +54,7 @@ const WelcomeComponent = () => {
             type="audio/mp3"
             volume={1}
             playIcon={<button className="play">Play</button>}
-            light={
-              <OutlineSubmitButton title="Включите звук телефона погромче и начнем! ?? ?" />
-            }
+            light={<OutlineSubmitButton title="Да!" />}
             onStart={() => {
               setTimeout(() => {
                 setStartWriting(true);
@@ -59,7 +63,7 @@ const WelcomeComponent = () => {
             onEnded={() => {
               setTimeout(() => {
                 setSecondIntroduction(true);
-              }, 4000);
+              }, 2000);
             }}
           />
         </div>
@@ -81,12 +85,12 @@ const WelcomeComponent = () => {
             onStart={() => {
               setTimeout(() => {
                 setStartWriting2(true);
-              }, 2000);
+              }, 1000);
             }}
             onEnded={() => {
               setTimeout(() => {
                 setNextStep(true);
-              }, 4000);
+              }, 2000);
             }}
           />
         </div>
