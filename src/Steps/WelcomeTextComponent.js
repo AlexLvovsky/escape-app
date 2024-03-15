@@ -40,7 +40,7 @@ const WelcomeComponent = () => {
         <div className="welcome-player-button">
           {!startWriting && (
             <div>
-              <h5>Включите звук телефона погромче!</h5>
+              <h2>Включите звук телефона погромче!</h2>
               <h4>Вы готовы начать?</h4>
             </div>
           )}
