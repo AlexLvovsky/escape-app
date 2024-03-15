@@ -49,9 +49,14 @@ const generateNameVariations = () => {
 };
 
 export const checkRightAnswer = (rightAnswers, answer) => {
-  const success = findBestMatch(answer, rightAnswers);
-  if (success != null) {
-    return true;
+  if (answer) {
+    const value = answer?.trim().toLowerCase();
+    const lowercasedRightAnswers = rightAnswers.map((answer) =>
+      answer.toLowerCase().trim()
+    );
+    if (lowercasedRightAnswers.includes(value)) {
+      return true;
+    }
   }
   return false;
 };
@@ -70,7 +75,7 @@ const initialState = {
   teemName: null,
   names: [],
   playersObject: {},
-  currentStep: steps.welcome,
+  currentStep: steps.end,
   subStep: subSteps.about_location,
   count: "",
   winnerName: null,
