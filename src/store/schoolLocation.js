@@ -23,7 +23,7 @@ export const schoolLoccation = {
         id: '1',
         used: false,
 
-        text: 'Серьезно? подсказка!',
+        text: 'Похоже, пришло время отправляться на экскурсию в ближайший дом престарелых, раз ваша память начинает играть в прятки без предупреждения.',
         filePath: '',
       },
       {
@@ -31,13 +31,6 @@ export const schoolLoccation = {
         used: false,
 
         text: 'Какой позор!',
-        filePath: '',
-      },
-      {
-        id: '3',
-        used: false,
-
-        text: 'Похоже, пришло время отправляться на экскурсию в ближайший дом престарелых, раз ваша память начинает играть в прятки без предупреждения.',
         filePath: '',
       },
     ],
@@ -94,8 +87,8 @@ export const schoolLoccation = {
         id: '1',
         used: false,
 
-        text: '/locationSchool/49.png',
-        filePath: '',
+        text: '',
+        filePath: '/locationSchool/49.png',
       },
       {
         id: '2',

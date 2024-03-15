@@ -21,13 +21,13 @@ export const baazarLoccation = {
       {
         id: '1',
         used: false,
-        text: 'ГУГЛ',
+        text: 'Google',
         filePath: '',
       },
       {
         id: '2',
         used: false,
-        text: 'Может это EXPO',
+        text: 'Может это EXPO? а может и нет...кто знает',
         filePath: '',
       },
       {
