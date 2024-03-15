@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { Wheel } from 'react-custom-roulette';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useState } from "react";
+import { Wheel } from "react-custom-roulette";
+import { useSelector, useDispatch } from "react-redux";
 import {
   setCurrentStep,
   setSpin,
@@ -8,14 +8,14 @@ import {
   setConfetti,
   setShowWheel,
   setDeleteWheel,
-} from '../store/appStore';
-import { TextField, Button } from '@mui/material';
-import { steps } from '../store/enum';
-import OutlineSubmitButton from '../Shared/Buttons/OutlineSubmitButton';
-import Confetti from '../Shared/Lottie/Confetti';
-import ReactPlayer from 'react-player';
-import Typewriter from '../Shared/TypeWritter/TypeWritter';
-import { introduction } from '../store/introduction';
+} from "../store/appStore";
+import { TextField, Button } from "@mui/material";
+import { steps } from "../store/enum";
+import OutlineSubmitButton from "../Shared/Buttons/OutlineSubmitButton";
+import Confetti from "../Shared/Lottie/Confetti";
+import ReactPlayer from "react-player";
+import Typewriter from "../Shared/TypeWritter/TypeWritter";
+import { introduction } from "../store/introduction";
 
 const WheelComponent = () => {
   const dispatch = useDispatch();
@@ -66,19 +66,19 @@ const WheelComponent = () => {
   return (
     <div
       className={`wheel-step ${
-        !startWritingLastDescription ? 'centered1' : ''
+        !startWritingLastDescription ? "centered1" : ""
       }`}
     >
       {confetti && <Confetti />}
       {!deleteWheel && (
-        <div className={`wheel-wrapper ${!showWheel ? 'fade-out' : ''}`}>
+        <div className={`wheel-wrapper ${!showWheel ? "fade-out" : ""}`}>
           <div>
             <Wheel
               mustStartSpinning={spin}
               prizeNumber={winnerIndex}
               data={playersObject}
               backgroundColors={segColors}
-              textColors={['#ffffff']}
+              textColors={["#ffffff"]}
               onStopSpinning={onStopSpinning}
             />
           </div>
@@ -117,7 +117,7 @@ const WheelComponent = () => {
             onEnded={() => {
               setTimeout(() => {
                 setShowBottomButton(true);
-              }, 3000);
+              }, 2000);
             }}
           />
         </div>

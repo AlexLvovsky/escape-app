@@ -10,7 +10,7 @@ const QrCode = (props) => {
       <h2>Приехали?</h2>
       <OutlineSubmitButton
         onClick={props.action}
-        title=" Нажмите для авторизации"
+        title="Нажмите для авторизации"
       />
     </div>
   );

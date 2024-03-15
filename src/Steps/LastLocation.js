@@ -22,15 +22,16 @@ const LastLocation = (props) => {
             onBottomButtonClick={() => dispatch(setSubStep(subSteps.qr_code))}
           />
         );
+      // case subSteps.qr_code:
+      //   return (
+      //     <QrCode
+      //       data={props.data.qRCode}
+      //       action={() => dispatch(setSubStep(subSteps.end))}
+      //     />
+      //   );
       case subSteps.qr_code:
-        return (
-          <QrCode
-            data={props.data.qRCode}
-            action={() => dispatch(setSubStep(subSteps.end))}
-          />
-        );
-      case subSteps.end:
-        return <Final />;
+        //case subSteps.end:
+        return <Final data={props.data.qRCode} />;
     }
   };
   return <div>{renderData()}</div>;

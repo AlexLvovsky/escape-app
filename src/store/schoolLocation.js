@@ -3,7 +3,7 @@ export const schoolLoccation = {
     id: 1,
     puzzleText: `Вопрос капитану команды: в адрес какого учреждения 
     Вы говорили такие слова? Вспоминайте!”`,
-    puzzleFilePath: `/locationSchool/part-1.mp4`,
+    puzzleVideoFilePath: `/locationSchool/part-1.mp4`,
     video: '',
     description_text: ``,
     description_filePath: ``,
@@ -22,18 +22,21 @@ export const schoolLoccation = {
       {
         id: '1',
         used: false,
+
         text: 'Серьезно? подсказка!',
         filePath: '',
       },
       {
         id: '2',
         used: false,
+
         text: 'Какой позор!',
         filePath: '',
       },
       {
         id: '3',
         used: false,
+
         text: 'Похоже, пришло время отправляться на экскурсию в ближайший дом престарелых, раз ваша память начинает играть в прятки без предупреждения.',
         filePath: '',
       },
@@ -58,12 +61,14 @@ export const schoolLoccation = {
       {
         id: '1',
         used: false,
+
         text: 'Начните, не стесняйтесь, каждый по очереди!',
         filePath: '',
       },
       {
         id: '2',
         used: false,
+
         text: 'один, два, три....',
         filePath: '',
       },
@@ -71,9 +76,11 @@ export const schoolLoccation = {
   },
   puzzleMain: {
     id: 1,
+
     puzzleText: ``,
     puzzleFilePath: `/locationSchool/48.png`,
     video: '',
+
     description_text: ``,
     description_filePath: ``,
     answer: '',
@@ -86,18 +93,21 @@ export const schoolLoccation = {
       {
         id: '1',
         used: false,
+
         text: '/locationSchool/49.png',
         filePath: '',
       },
       {
         id: '2',
         used: false,
+
         text: '',
         filePath: '/locationSchool/50.png',
       },
       {
         id: '3',
         used: false,
+
         text: '',
         filePath: '/locationSchool/51.png',
       },

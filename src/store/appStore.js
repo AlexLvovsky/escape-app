@@ -1,7 +1,7 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { steps, errorType, subSteps } from './enum';
-import { errors } from './variables';
-import _ from 'lodash';
+import { createSlice } from "@reduxjs/toolkit";
+import { steps, errorType, subSteps } from "./enum";
+import { errors } from "./variables";
+import _ from "lodash";
 
 const findBestMatch = (targetName, namesArray) => {
   let bestMatch = { index: -1, similarity: 0 };
@@ -24,17 +24,17 @@ const findBestMatch = (targetName, namesArray) => {
 
 const generateNameVariations = () => {
   const nameVariations = [
-    'Ekaterina',
-    'Катя',
-    'Екатерина',
-    'Катэ',
-    'Katya',
-    'Katerina',
-    'Catherine',
-    'Yekaterina',
-    'Katusha',
-    'Katyusha',
-    'Катюша',
+    "Ekaterina",
+    "Катя",
+    "Екатерина",
+    "Катэ",
+    "Katya",
+    "Katerina",
+    "Catherine",
+    "Yekaterina",
+    "Katusha",
+    "Katyusha",
+    "Катюша",
   ];
 
   const variations = [];
@@ -59,20 +59,20 @@ export const checkRightAnswer = (rightAnswers, answer) => {
 const initialState = {
   value: 0,
   segColors: [
-    '#000080',
-    '#4169E1',
-    '#010c80a3',
-    '#0047AB',
-    '#3F00FF',
-    '#00008B',
-    '#0F52BA',
+    "#000080",
+    "#4169E1",
+    "#010c80a3",
+    "#0047AB",
+    "#3F00FF",
+    "#00008B",
+    "#0F52BA",
   ],
   teemName: null,
   names: [],
   playersObject: {},
-  currentStep: steps.park,
+  currentStep: steps.welcome,
   subStep: subSteps.about_location,
-  count: '',
+  count: "",
   winnerName: null,
   winnerIndex: null,
   loader: false,
@@ -90,7 +90,7 @@ const initialState = {
 };
 
 export const appStore = createSlice({
-  name: 'appStore',
+  name: "appStore",
   initialState,
   reducers: {
     setName: (state, action) => {

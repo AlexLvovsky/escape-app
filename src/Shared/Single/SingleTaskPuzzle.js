@@ -1,22 +1,22 @@
-import React, { useState, useEffect } from 'react';
-import OwnTextFieldInput from '../WhiteTextField';
-import { Box } from '@mui/material';
-import Lottie from 'lottie-react';
-import right from '../../media/animations/right.json';
-import unlike from '../../media/animations/krestik.json';
-import help from '../../media/icons/help.svg';
-import ModalComponent from '../Modal/ModalComponent';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useState, useEffect, useRef } from "react";
+import OwnTextFieldInput from "../WhiteTextField";
+import { Box } from "@mui/material";
+import Lottie from "lottie-react";
+import right from "../../media/animations/right.json";
+import unlike from "../../media/animations/krestik.json";
+import help from "../../media/icons/help.svg";
+import ModalComponent from "../Modal/ModalComponent";
+import { useSelector, useDispatch } from "react-redux";
 import {
   checkRightAnswer,
   openModal,
   openNestedModal,
-} from '../../store/appStore';
-import { steps, modalCauses } from '../../store/enum';
-import NestedModal from '../Modal/NestedModalComponent';
-import ReactPlayer from 'react-player';
-import OutlineSubmitButton from '../../Shared/Buttons/OutlineSubmitButton';
-import Typewriter from '../../Shared/TypeWritter/TypeWritter';
+} from "../../store/appStore";
+import { steps, modalCauses } from "../../store/enum";
+import NestedModal from "../Modal/NestedModalComponent";
+import ReactPlayer from "react-player";
+import OutlineSubmitButton from "../../Shared/Buttons/OutlineSubmitButton";
+import Typewriter from "../../Shared/TypeWritter/TypeWritter";
 
 const ClueData = (props) => {
   return (
@@ -33,15 +33,9 @@ const ClueData = (props) => {
 
 const SingleTaskPuzzle = (props) => {
   const dispatch = useDispatch();
-  // const [startWritingDescription, setStartWritingDescription] = useState(false);
   const [startWritingLastDescription, setStartWritingLastDescription] =
     useState(false);
-  //
-  // const [showPuzzle, setShowPuzzle] = useState(
-  //   puzzleData.description_text && puzzleData.description_filePath
-  //     ? false
-  //     : true
-  // );
+
   const { loader, shouldUpdateStep, modal, nestedModal } = useSelector(
     (state) => state
   );
@@ -53,6 +47,7 @@ const SingleTaskPuzzle = (props) => {
   const [showIncorrectAnswer, setShowIncorrectAnswer] = useState(false);
   const [submitPlayingLastDescription, setSubmitPlayingLastDescription] =
     useState(false);
+  const bottomButtonRef = useRef(null);
 
   useEffect(() => {
     if (puzzleData.done == true) {
@@ -63,6 +58,21 @@ const SingleTaskPuzzle = (props) => {
       }
     }
   }, [puzzleData.done]);
+
+  useEffect(() => {
+    if (bottomButton && bottomButtonRef.current) {
+      const windowHeight = window.innerHeight;
+      const marginBottom = 500; // Adjust this value according to your needs
+
+      const targetPosition =
+        bottomButtonRef.current.offsetTop - (windowHeight - marginBottom);
+
+      window.scrollTo({
+        top: targetPosition,
+        behavior: "smooth",
+      });
+    }
+  }, [bottomButton]);
 
   const onInputChange = (value) => {
     setShowIncorrectAnswer(false);
@@ -117,37 +127,7 @@ const SingleTaskPuzzle = (props) => {
   const renderItem = () => {
     return (
       <div className="puzzle-item">
-        {/* {puzzleData.description_text && puzzleData.description_filePath && (
-          <div className="description">
-            {startWritingDescription && (
-              <div className="text">
-                <Typewriter text={puzzleData.description_text} delay={75} />
-              </div>
-            )}{" "}
-            <ReactPlayer
-              url={puzzleData}
-              width="100%"
-              height="1px"
-              controls={false}
-              playing={true}
-              muted={false}
-              type="audio/mp3"
-              volume={1}
-              playIcon={<button className="play">Play</button>}
-              light={<OutlineSubmitButton title="Старт ?? ?" />}
-              onStart={() => {
-                setTimeout(() => {
-                  setStartWritingDescription(true);
-                }, 1000);
-              }}
-              onEnded={() => {
-                setShowPuzzle(true);
-              }}
-            />
-          </div>
-        )} */}
         <div className="puzzle-data">
-          {/* {showPuzzle && ( //check if there is first description*/}
           <div>
             {puzzleData.puzzleText && (
               <div
@@ -160,10 +140,22 @@ const SingleTaskPuzzle = (props) => {
                 <img src={`${puzzleData.puzzleFilePath}`} alt="" />
               </div>
             )}
+            {puzzleData.puzzleVideoFilePath && (
+              <div>
+                <ReactPlayer
+                  url={puzzleData.puzzleVideoFilePath}
+                  width="100%"
+                  height="100%"
+                  controls={true}
+                  type="video/mp4"
+                  playing={false}
+                />
+              </div>
+            )}
             <Box
               component="form"
               sx={{
-                '& .MuiTextField-root': { m: 1, width: '320px' },
+                "& .MuiTextField-root": { m: 1, width: "320px" },
               }}
               autoComplete="off"
             >
@@ -177,7 +169,7 @@ const SingleTaskPuzzle = (props) => {
                 <div className="answer-form">
                   <OwnTextFieldInput
                     id="outlined-basic"
-                    label={'Ваш ответ'}
+                    label={"Ваш ответ"}
                     variant="outlined"
                     onChange={(e) => onInputChange(e.target.value)}
                     value={puzzleData.answer}
@@ -207,9 +199,8 @@ const SingleTaskPuzzle = (props) => {
               </div>
             </Box>
           </div>
-          {/* )} */}
         </div>
-        {/* {puzzleData.last_description_text && puzzleData.done && ( */}
+
         {submitPlayingLastDescription && (
           <div className="last-description">
             {startWritingLastDescription && (
@@ -242,15 +233,17 @@ const SingleTaskPuzzle = (props) => {
             />
           </div>
         )}
-        {bottomButton && puzzleData.done && (
-          <div className="puzzle-item-bottom-button">
-            <OutlineSubmitButton
-              onClick={props.onBottomButtonClick}
-              title={props.bottomButtonText}
-              className="w-100"
-            />
-          </div>
-        )}
+        <div ref={bottomButtonRef}>
+          {bottomButton && puzzleData.done && (
+            <div className="puzzle-item-bottom-button">
+              <OutlineSubmitButton
+                onClick={props.onBottomButtonClick}
+                title={props.bottomButtonText}
+                className="w-100"
+              />
+            </div>
+          )}
+        </div>
       </div>
     );
   };
@@ -263,27 +256,27 @@ const SingleTaskPuzzle = (props) => {
         <ModalComponent
           open={modal}
           handleClose={() => dispatch(openModal(false))}
-          title={'Вы уверены, что хотите подсказку?'}
+          title={"Вы уверены, что хотите подсказку?"}
           cause={modalCauses.info}
           button={true}
           extraButton={true}
           onButtonClick={openClueData}
-          buttonText={'Да'}
+          buttonText={"Да"}
           onExtraButtonClick={() => dispatch(openModal(false))}
-          extraButtonText={'Нет'}
+          extraButtonText={"Нет"}
         />
       )}
       {nestedModal && (
         <NestedModal
           open={nestedModal}
           handleClose={() => dispatch(openNestedModal(false))}
-          parentTitle={'Подсказки закончились. Показать правильный ответ?'}
+          parentTitle={"Подсказки закончились. Показать правильный ответ?"}
           //parentText={"parentText"}
           childTitle={puzzleData.rightAnswer[0]}
           //childText={"childText"}
-          closeChildModalButtonText={'OK'}
-          openChildModalButtonText={'Да'}
-          closeParentModalButtonText={'Нет'}
+          closeChildModalButtonText={"OK"}
+          openChildModalButtonText={"Да"}
+          closeParentModalButtonText={"Нет"}
         />
       )}
     </div>

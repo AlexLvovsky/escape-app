@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useEffect, useState, useRef } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import {
   setName,
   setCurrentStep,
@@ -8,18 +8,18 @@ import {
   openModal,
   setError,
   setTeemName,
-} from '../store/appStore';
-import { TextField, Box } from '@mui/material';
-import { steps, errorType } from '../store/enum';
-import { errors } from '../store/variables';
-import OwnTextFieldInput from '../Shared/WhiteTextField';
-import ModalComponent from '../Shared/Modal/ModalComponent';
-import OutlineSubmitButton from '../Shared/Buttons/OutlineSubmitButton';
-import Lottie from 'lottie-react';
-import bike from '../media/animations/bike.json';
-import ReactPlayer from 'react-player';
-import Typewriter from '../Shared/TypeWritter/TypeWritter';
-import { introduction } from '../store/introduction';
+} from "../store/appStore";
+import { TextField, Box } from "@mui/material";
+import { steps, errorType } from "../store/enum";
+import { errors } from "../store/variables";
+import OwnTextFieldInput from "../Shared/WhiteTextField";
+import ModalComponent from "../Shared/Modal/ModalComponent";
+import OutlineSubmitButton from "../Shared/Buttons/OutlineSubmitButton";
+import Lottie from "lottie-react";
+import bike from "../media/animations/bike.json";
+import ReactPlayer from "react-player";
+import Typewriter from "../Shared/TypeWritter/TypeWritter";
+import { introduction } from "../store/introduction";
 
 const PlayersComponent = () => {
   const dispatch = useDispatch();
@@ -30,12 +30,26 @@ const PlayersComponent = () => {
   const [startWritingLastDescription, setStartWritingLastDescription] =
     useState(false);
   const modalError = errors.find((e) => e.type === errorType.no_winner);
-
+  const bottomButtonRef = useRef(null);
   useEffect(() => {
     if (error) {
       dispatch(openModal(true));
     }
   }, [error]);
+  useEffect(() => {
+    if (showBottomButton && bottomButtonRef.current) {
+      const windowHeight = window.innerHeight;
+      const marginBottom = 200; // Adjust this value according to your needs
+
+      const targetPosition =
+        bottomButtonRef.current.offsetTop - (windowHeight - marginBottom);
+
+      window.scrollTo({
+        top: targetPosition,
+        behavior: "smooth",
+      });
+    }
+  }, [showBottomButton]);
 
   const handleCountChange = (e) => {
     const newCount = parseInt(e.target.value, 10) || null;
@@ -63,7 +77,7 @@ const PlayersComponent = () => {
         <Box
           component="form"
           sx={{
-            '& .MuiTextField-root': { m: 1, width: '320px' },
+            "& .MuiTextField-root": { m: 1, width: "320px" },
           }}
           autoComplete="off"
         >
@@ -93,7 +107,7 @@ const PlayersComponent = () => {
           <Box
             component="form"
             sx={{
-              '& .MuiTextField-root': { m: 1, width: '320px' },
+              "& .MuiTextField-root": { m: 1, width: "320px" },
             }}
             //autoComplete="off"
           >
@@ -104,7 +118,7 @@ const PlayersComponent = () => {
                     key={index}
                     label={`Игрок ${index + 1}:`}
                     variant="outlined"
-                    value={names[index] || ''}
+                    value={names[index] || ""}
                     onChange={(e) => handleNameChange(e, index)}
                     required
                     id="margin-normal"
@@ -154,15 +168,17 @@ const PlayersComponent = () => {
                 />
               )}
             </div>
-            {showBottomButton && (
-              <OutlineSubmitButton
-                onClick={() => {
-                  dispatch(setCurrentStep({ currentStep: steps.wheel }));
-                }}
-                title="Да, конечно"
-                className=""
-              />
-            )}
+            <div ref={bottomButtonRef}>
+              {showBottomButton && (
+                <OutlineSubmitButton
+                  onClick={() => {
+                    dispatch(setCurrentStep({ currentStep: steps.wheel }));
+                  }}
+                  title="Да, конечно"
+                  className=""
+                />
+              )}
+            </div>
           </Box>
         )}
       </div>
