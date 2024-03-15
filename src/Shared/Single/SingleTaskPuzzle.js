@@ -22,9 +22,9 @@ const ClueData = (props) => {
   return (
     <div className="clue-item-wrapper">
       {props.clueData.text && <div>{props.clueData.text}</div>}
-      {props.clueData.fileName && (
+      {props.clueData.filePath && (
         <div className="puzzle-image">
-          <img src={`${props.clueData.fileName}`} alt="" />
+          <img src={`${props.clueData.filePath}`} alt="" />
         </div>
       )}
     </div>
@@ -228,7 +228,9 @@ const SingleTaskPuzzle = (props) => {
                 }, 1000);
               }}
               onEnded={() => {
-                setBottomButton(true);
+                setTimeout(() => {
+                  setBottomButton(true);
+                }, 5000);
               }}
             />
           </div>

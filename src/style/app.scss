@@ -115,7 +115,11 @@ body {
     padding-top: 20px;
   }
   .players-component-form {
-    padding-top: 150px;
+    width: 100vw;
+    padding: 150px 15px 0;
+  }
+  .winner-data-wrapper {
+    width: 100vw;
   }
   .centered {
     display: flex;
