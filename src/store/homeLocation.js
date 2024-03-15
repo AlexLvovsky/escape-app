@@ -15,19 +15,19 @@ export const homeLocationData = {
       {
         id: '1',
         used: false,
-        text: '',
+        text: 'Напоминаю: в ваших руках находится телефон, обладающий доступом к мировой паутине.',
         filePath: '',
       },
       {
         id: '2',
         used: false,
-        text: '',
+        text: 'Где обычно проживают ваши близкие родственники?',
         filePath: '',
       },
       {
         id: '3',
         used: false,
-        text: '',
+        text: 'Кузя, персонаж из детского анимационного сериала.',
         filePath: '',
       },
     ],

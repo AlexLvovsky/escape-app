@@ -22,19 +22,19 @@ export const schoolLoccation = {
       {
         id: '1',
         used: false,
-        text: '',
+        text: 'Серьезно? подсказка!',
         filePath: '',
       },
       {
         id: '2',
         used: false,
-        text: '',
+        text: 'Какой позор!',
         filePath: '',
       },
       {
         id: '3',
         used: false,
-        text: '',
+        text: 'Похоже, пришло время отправляться на экскурсию в ближайший дом престарелых, раз ваша память начинает играть в прятки без предупреждения.',
         filePath: '',
       },
     ],
@@ -58,31 +58,21 @@ export const schoolLoccation = {
       {
         id: '1',
         used: false,
-        text: '',
+        text: 'Начните, не стесняйтесь, каждый по очереди!',
         filePath: '',
       },
       {
         id: '2',
         used: false,
-        text: '',
-        filePath: '',
-      },
-      {
-        id: '3',
-        used: false,
-        text: '',
+        text: 'один, два, три....',
         filePath: '',
       },
     ],
   },
   puzzleMain: {
     id: 1,
-    puzzleText: `Март. 2024 год. По мнению одного из Искусственных интеллектов, цель жизни в том, что зашифровано ниже. ИИ пытается философствовать. Покажите, кто в мире хозяин и отгадайте: в чем же смысл жизни?<br /><br />
-
-    <b>«Пт2, Вс2, Ср3, Сб5  
-    Вс1, Ср1, Пн4, Пт3, Сб3»</b>
-    `,
-    puzzleFilePath: ``,
+    puzzleText: ``,
+    puzzleFilePath: `/locationSchool/48.png`,
     video: '',
     description_text: ``,
     description_filePath: ``,
@@ -96,20 +86,20 @@ export const schoolLoccation = {
       {
         id: '1',
         used: false,
-        text: 'Представим что каждая русская буква имеет нумерацию',
+        text: '/locationSchool/49.png',
         filePath: '',
       },
       {
         id: '2',
         used: false,
-        text: 'Календарь на март',
-        filePath: '/locationSchool/part-3.jpg',
+        text: '',
+        filePath: '/locationSchool/50.png',
       },
       {
         id: '3',
         used: false,
-        text: 'Нумерация русских букв',
-        filePath: '/locationSchool/part-4.jpg',
+        text: '',
+        filePath: '/locationSchool/51.png',
       },
     ],
   },

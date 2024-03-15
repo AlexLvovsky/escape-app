@@ -1,10 +1,8 @@
 export const baazarLoccation = {
   puzzleAboutLoccation: {
     id: 1,
-    puzzleText: `Они стали важными факторами развития городов и торговли в Европе в средние века. 
-    Они способствовали распространению товаров, идей и культуры, 
-    а также стимулировали развитие ремесла и торговли. Что же это - «они»?`,
-    puzzleFilePath: ``,
+    puzzleText: ``,
+    puzzleFilePath: `/locationBaazar/39.png`,
     video: '',
     description_text: ``,
     description_filePath: ``,
@@ -23,19 +21,19 @@ export const baazarLoccation = {
       {
         id: '1',
         used: false,
-        text: '',
+        text: 'ГУГЛ',
         filePath: '',
       },
       {
         id: '2',
         used: false,
-        text: '',
+        text: 'Может это EXPO',
         filePath: '',
       },
       {
         id: '3',
         used: false,
-        text: '',
+        text: 'Кажется, пришло время собрать совет мудрецов. Или, как минимум, начать активно обмениваться мнениями, чтобы пролить свет на эту загадку.',
         filePath: '',
       },
     ],
@@ -59,19 +57,7 @@ export const baazarLoccation = {
       {
         id: '1',
         used: false,
-        text: '',
-        filePath: '',
-      },
-      {
-        id: '2',
-        used: false,
-        text: '',
-        filePath: '',
-      },
-      {
-        id: '3',
-        used: false,
-        text: '',
+        text: 'В таком случае, поручим эту задачу ребёнку – они с подсчётами на "ты".',
         filePath: '',
       },
     ],
@@ -81,7 +67,7 @@ export const baazarLoccation = {
     puzzleText: `ИИ никогда не сможет создать такое же кино, как человек. 
     Искусство созданное человеком совершенно, но не идеально на 100%, и именно этим прекрасно. 
     Такое неидеальное искусство мы, люди, называем живым. `,
-    puzzleFilePath: ``,
+    puzzleFilePath: `/locationBaazar/42.png`,
     video: '',
     description_text: ``,
     description_filePath: ``,
@@ -95,20 +81,20 @@ export const baazarLoccation = {
       {
         id: '1',
         used: false,
-        text: 'Какими технологиями отличались 2000-е года от наших?',
-        filePath: '',
+        text: '',
+        filePath: '/locationBaazar/43.png',
       },
       {
         id: '2',
         used: false,
-        text: 'Разница в смартфонах и кнопочных телефонах',
-        filePath: '',
+        text: '',
+        filePath: '/locationBaazar/44.png',
       },
       {
         id: '3',
         used: false,
-        text: 'here must be picture of phonekeybord', //need to complite
-        filePath: '',
+        text: '',
+        filePath: '/locationBaazar/45.png',
       },
     ],
   },
