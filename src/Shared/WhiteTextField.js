@@ -34,7 +34,7 @@ const OwnTextFieldInput = styled(TextField)({
 
 const OwnTextField = (props) => {
   return (
-    <div>
+    <div className="w-100">
       <OwnTextFieldInput
         label={props.label}
         value={props.value}

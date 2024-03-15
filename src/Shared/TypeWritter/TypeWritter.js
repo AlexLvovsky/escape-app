@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 const convertToPlainText = (text) => {
   const doc = new DOMParser().parseFromString(text, "text/html");
@@ -8,6 +8,7 @@ const convertToPlainText = (text) => {
 const Typewriter = ({ text, delay }) => {
   const [currentText, setCurrentText] = useState("");
   const [currentIndex, setCurrentIndex] = useState(0);
+  const outputRef = useRef(null);
 
   useEffect(() => {
     if (currentIndex < text?.length) {
@@ -20,9 +21,32 @@ const Typewriter = ({ text, delay }) => {
     }
   }, [currentIndex, delay, text]);
 
+  useEffect(() => {
+    if (outputRef.current) {
+      const windowHeight = window.innerHeight;
+      const marginBottom = 50; // Adjust this value according to your needs
+
+      const targetPosition =
+        outputRef.current.offsetTop +
+        outputRef.current.offsetHeight -
+        (windowHeight - marginBottom);
+
+      window.scrollTo({
+        top: targetPosition,
+        behavior: "smooth",
+      });
+    }
+  }, [currentText]);
+
   const plainText = convertToPlainText(currentText);
 
-  return <span dangerouslySetInnerHTML={{ __html: plainText }} />;
+  return (
+    <span
+      className="type-writer-wrapper"
+      ref={outputRef}
+      dangerouslySetInnerHTML={{ __html: plainText }}
+    />
+  );
 };
 
 export default Typewriter;

@@ -1,5 +1,5 @@
-@import 'src/style/variables.scss';
-@import '~video-react/styles/scss/video-react';
+@import "src/style/variables.scss";
+@import "~video-react/styles/scss/video-react";
 body {
   background-color: $background !important;
 }
@@ -14,8 +14,8 @@ body {
   color: $text;
   position: relative;
   max-width: 600px;
-  background-image: url('../../public/background/28-2.png'),
-    url('../../public/background/29-1.png');
+  background-image: url("../../public/background/28-2.png"),
+    url("../../public/background/29-1.png");
   background-position: left top, right bottom;
   background-size: 25%, 50%;
   background-repeat: no-repeat, no-repeat;
@@ -41,6 +41,10 @@ body {
     text-align: left;
     font-weight: bolder;
   }
+  .puzzle-text {
+    padding-bottom: 15px;
+    font-weight: 600;
+  }
   .bike-animation {
     position: absolute;
     top: 0;
@@ -48,6 +52,11 @@ body {
     width: 100%;
     svg {
       max-width: 400px;
+    }
+  }
+  .animation {
+    &.final {
+      position: absolute;
     }
   }
   .h-70 {
@@ -63,6 +72,9 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+  }
+  .w-100 {
+    width: 100%;
   }
 
   .fade-out {
@@ -83,6 +95,7 @@ body {
   }
   .css-1hag5lt .MuiTextField-root {
     margin: 8px 0;
+    width: 100%;
   }
   .welcome-wrapper {
     h3 {
@@ -148,7 +161,7 @@ body {
 }
 .puzzle-wrapper {
   text-align: left;
-  padding: 18px;
+  //padding: 18px;
   .puzzle-image {
     img {
       width: 100%;
