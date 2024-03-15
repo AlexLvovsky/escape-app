@@ -1,20 +1,20 @@
-import React, { useState, useEffect } from "react";
-import OwnTextFieldInput from "../WhiteTextField";
-import { Box } from "@mui/material";
-import { checkRightAnswer } from "../../store/appStore";
-import Lottie from "lottie-react";
-import right from "../../media/animations/right.json";
-import unlike from "../../media/animations/unlike.json";
-import help from "../../media/icons/help.svg";
-import ModalComponent from "../Modal/ModalComponent";
-import { useSelector, useDispatch } from "react-redux";
-import { openModal, openNestedModal } from "../../store/appStore";
-import { modalCauses } from "../../store/enum";
-import NestedModal from "../Modal/NestedModalComponent";
-import OutlineSubmitButton from "../../Shared/Buttons/OutlineSubmitButton";
-import Typewriter from "../../Shared/TypeWritter/TypeWritter";
-import ReactPlayer from "react-player";
-import naale from "../../media/photoAndVideo/naale.mp4";
+import React, { useState, useEffect } from 'react';
+import OwnTextFieldInput from '../WhiteTextField';
+import { Box } from '@mui/material';
+import { checkRightAnswer } from '../../store/appStore';
+import Lottie from 'lottie-react';
+import right from '../../media/animations/right.json';
+import unlike from '../../media/animations/krestik.json';
+import help from '../../media/icons/help.svg';
+import ModalComponent from '../Modal/ModalComponent';
+import { useSelector, useDispatch } from 'react-redux';
+import { openModal, openNestedModal } from '../../store/appStore';
+import { modalCauses } from '../../store/enum';
+import NestedModal from '../Modal/NestedModalComponent';
+import OutlineSubmitButton from '../../Shared/Buttons/OutlineSubmitButton';
+import Typewriter from '../../Shared/TypeWritter/TypeWritter';
+import ReactPlayer from 'react-player';
+import naale from '../../media/photoAndVideo/naale.mp4';
 
 const ClueData = (props) => {
   console.log(props);
@@ -23,7 +23,7 @@ const ClueData = (props) => {
       {props.clueData.text && <div>{props.clueData.text}</div>}
       {props.clueData.fileName && (
         <div className="puzzle-image">
-          <img src={`/${props.clueData.fileName}`} alt="" />
+          <img src={`${props.clueData.fileName}`} alt="" />
         </div>
       )}
     </div>
@@ -48,7 +48,7 @@ const MultiTaskingPuzzle = (props) => {
 
   useEffect(() => {
     const lastDescription = props.data.find((puzzle) => {
-      return puzzle.last_description_text !== "";
+      return puzzle.last_description_text !== '';
     });
     if (!lastDescription) {
       setBottomButton(true);
@@ -69,7 +69,7 @@ const MultiTaskingPuzzle = (props) => {
       } else {
         setBottomButton(true);
       }
-      console.log("all puzzles are completed");
+      console.log('all puzzles are completed');
     }
   }, [puzzleData]);
 
@@ -142,7 +142,7 @@ const MultiTaskingPuzzle = (props) => {
     if (rightAnswers) {
       return rightAnswers.rightAnswer[0];
     }
-    return "";
+    return '';
   };
   const handleAddIcon = (id) => {
     setShowIncorrectAnswer((prevArray) => [...prevArray, id]);
@@ -160,14 +160,14 @@ const MultiTaskingPuzzle = (props) => {
           )}
           {puzzle.puzzleFilePath && (
             <div className="puzzle-image">
-              <img src={`/${puzzle.puzzleFilePath}`} alt="" />
+              <img src={`${puzzle.puzzleFilePath}`} alt="" />
             </div>
           )}
           <Box
             key={puzzle.id}
             component="form"
             sx={{
-              "& .MuiTextField-root": { m: 1, width: "320px" },
+              '& .MuiTextField-root': { m: 1, width: '320px' },
             }}
             autoComplete="off"
           >
@@ -180,7 +180,7 @@ const MultiTaskingPuzzle = (props) => {
               <div className="answer-form">
                 <OwnTextFieldInput
                   id="outlined-basic"
-                  label={"Ваш ответ"}
+                  label={'Ваш ответ'}
                   variant="outlined"
                   onChange={(e) => {
                     onInputChange(e.target.value, puzzle.id);
@@ -270,27 +270,27 @@ const MultiTaskingPuzzle = (props) => {
         <ModalComponent
           open={modal}
           handleClose={closeModal}
-          title={"Вы уверены, что хотите видеть подсказку?"}
+          title={'Вы уверены, что хотите видеть подсказку?'}
           cause={modalCauses.info}
           button={true}
           extraButton={true}
           onButtonClick={openClueData}
-          buttonText={"Да"}
+          buttonText={'Да'}
           onExtraButtonClick={closeModal}
-          extraButtonText={"Нет"}
+          extraButtonText={'Нет'}
         />
       )}
       {nestedModal && (
         <NestedModal
           open={nestedModal}
           handleClose={closeNestedModal}
-          parentTitle={"Подсказки закончились. Показать правильный ответ?"}
+          parentTitle={'Подсказки закончились. Показать правильный ответ?'}
           //parentText={"parentText"}
           childTitle={getRightAnswer()}
           //childText={"childText"}
-          closeChildModalButtonText={"OK"}
-          openChildModalButtonText={"Да"}
-          closeParentModalButtonText={"Нет"}
+          closeChildModalButtonText={'OK'}
+          openChildModalButtonText={'Да'}
+          closeParentModalButtonText={'Нет'}
         />
       )}
     </div>

@@ -1,17 +1,18 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { setCurrentStep } from "../store/appStore";
-import OutlineSubmitButton from "../Shared/Buttons/OutlineSubmitButton";
-import Lottie from "lottie-react";
-import lock from "../media/animations/lock.json";
-import robot from "../media/animations/robot.json";
-import work from "../media/animations/work.json";
-import Confetti from "../Shared/Lottie/Confetti";
-import con from "../media/animations/confetti.json";
-import { steps } from "../store/enum";
-import ReactPlayer from "react-player";
-import audioHello from "../media/audio/hello.mp3";
-import Typewriter from "../Shared/TypeWritter/TypeWritter";
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { setCurrentStep } from '../store/appStore';
+import OutlineSubmitButton from '../Shared/Buttons/OutlineSubmitButton';
+import Lottie from 'lottie-react';
+import lock from '../media/animations/lock.json';
+import robot from '../media/animations/robot.json';
+import work from '../media/animations/work.json';
+import Confetti from '../Shared/Lottie/Confetti';
+import con from '../media/animations/confetti.json';
+import { steps } from '../store/enum';
+import ReactPlayer from 'react-player';
+import audioHello from '../media/audio/hello.mp3';
+import Typewriter from '../Shared/TypeWritter/TypeWritter';
+import { introduction } from '../store/introduction';
 
 const Final = () => {
   const dispatch = useDispatch();
@@ -27,13 +28,13 @@ const Final = () => {
 
       {startWriting && (
         <div className="text">
-          <Typewriter text={c} delay={75} />
+          <Typewriter text={introduction.final} delay={75} />
         </div>
       )}
       {!nextStep && (
         <div className="welcome-player-button">
           <ReactPlayer
-            url={audioHello}
+            url={'/introduction/part-8.mp3'}
             width="100%"
             height="1px"
             controls={false}

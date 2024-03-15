@@ -40,7 +40,7 @@ export const schoolLoccation = {
     ],
   },
   qRCode: {
-    filePath: ``,
+    filePath: `/locationSchool/47.png`,
   },
   puzzlePrevMain: {
     id: 1,
@@ -52,8 +52,8 @@ export const schoolLoccation = {
     answer: '',
     rightAnswer: ['33'],
     done: false,
-    last_description_text: ``,
-    last_description_filePath: ``,
+    last_description_text: `Изучение английского языка в школьных классах открывает дверь в мир философии, предоставляя ключ к пониманию широкого спектра философских идей и теорий, изложенных на английском языке, тем самым обогащая наше восприятие и понимание мира.`,
+    last_description_filePath: `/locationSchool/part-6.mp3`,
     clues: [
       {
         id: '1',

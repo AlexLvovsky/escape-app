@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { setCurrentStep } from "../store/appStore";
-import OutlineSubmitButton from "../Shared/Buttons/OutlineSubmitButton";
-import ReactPlayer from "react-player";
-import { steps, subSteps } from "../store/enum";
-import naale from "../media/photoAndVideo/naale.mp4";
-import { introduction } from "../store/introduction";
-import Typewriter from "../Shared/TypeWritter/TypeWritter";
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { setCurrentStep } from '../store/appStore';
+import OutlineSubmitButton from '../Shared/Buttons/OutlineSubmitButton';
+import ReactPlayer from 'react-player';
+import { steps, subSteps } from '../store/enum';
+import naale from '../media/photoAndVideo/naale.mp4';
+import { introduction } from '../store/introduction';
+import Typewriter from '../Shared/TypeWritter/TypeWritter';
 
 const SurpriseHerComponent = () => {
   const dispatch = useDispatch();
@@ -25,7 +25,7 @@ const SurpriseHerComponent = () => {
                 <div>Екатерина, это самое раннее, что ИИ смог найти о Вас.</div>
                 <OutlineSubmitButton
                   onClick={() => setShowVideo(true)}
-                  title={"Показать!"}
+                  title={'Показать!'}
                   className="w-100"
                 />
               </div>
@@ -57,7 +57,7 @@ const SurpriseHerComponent = () => {
           )}
 
           <ReactPlayer
-            url={"/introduction/part-5.mp3"}
+            url={'/introduction/part-5.mp3'}
             width="100%"
             height="1px"
             controls={false}
@@ -97,7 +97,7 @@ const SurpriseHerComponent = () => {
                 })
               )
             }
-            title={"Да"}
+            title={'Да! Начать игру'}
             className="w-100"
           />
         </div>

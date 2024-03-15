@@ -1,5 +1,5 @@
-@import "src/style/variables.scss";
-@import "~video-react/styles/scss/video-react";
+@import 'src/style/variables.scss';
+@import '~video-react/styles/scss/video-react';
 body {
   background-color: $background !important;
 }
@@ -14,8 +14,8 @@ body {
   color: $text;
   position: relative;
   max-width: 600px;
-  background-image: url("../../public/background/28-2.png"),
-    url("../../public/background/29-1.png");
+  background-image: url('../../public/background/28-2.png'),
+    url('../../public/background/29-1.png');
   background-position: left top, right bottom;
   background-size: 25%, 50%;
   background-repeat: no-repeat, no-repeat;
@@ -180,5 +180,10 @@ body {
     .my-own-button {
       width: 100% !important;
     }
+  }
+}
+.qr-code-image {
+  img {
+    width: 100%;
   }
 }
