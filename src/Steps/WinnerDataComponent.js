@@ -66,11 +66,13 @@ const WinnerDataComponent = () => {
         className="w-100"
       >
         <OwnTextFieldInput
-          id="outlined-basic"
           label="Дата Рождения"
-          variant="outlined"
-          onChange={(e) => setInput1(e.target.value)}
           value={input1}
+          onChange={(e) => setInput1(e.target.value)}
+          variant="outlined"
+          type="tel"
+          inputMode="numeric"
+          maxLength={10}
         />
         <OwnTextFieldInput
           id="outlined-basic"
@@ -99,6 +101,7 @@ const WinnerDataComponent = () => {
           variant="outlined"
           onChange={(e) => setInput5(e.target.value)}
           value={input5}
+          type="email"
         />
 
         <br />

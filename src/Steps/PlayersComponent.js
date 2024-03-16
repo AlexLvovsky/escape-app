@@ -76,6 +76,9 @@ const PlayersComponent = () => {
       <div className="players-component-form">
         <Box
           component="form"
+          onSubmit={(event) => {
+            event.preventDefault();
+          }}
           sx={{
             "& .MuiTextField-root": { m: 1, width: "320px" },
           }}

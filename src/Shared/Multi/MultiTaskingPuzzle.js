@@ -179,6 +179,9 @@ const MultiTaskingPuzzle = (props) => {
           )}
           <Box
             key={puzzle.id}
+            onSubmit={(event) => {
+              event.preventDefault();
+            }}
             component="form"
             sx={{
               "& .MuiTextField-root": { m: 1, width: "320px" },
