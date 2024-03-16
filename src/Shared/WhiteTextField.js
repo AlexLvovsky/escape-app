@@ -37,16 +37,13 @@ const OwnTextField = (props) => {
   const formatDateAndValidate = (value) => {
     if (!value) return { formattedDate: "", isValid: false };
 
-    // Remove all non-digits and slice to appropriate length
     const numbers = value.replace(/[^\d]/g, '').slice(0, 8);
 
-    // Split into components
     const chars = numbers.split('');
     if (chars.length > 2) chars.splice(2, 0, '/');
     if (chars.length > 5) chars.splice(5, 0, '/');
     const formattedDate = chars.join('');
 
-    // Validate the date using date-fns
     const date = parse(formattedDate, 'dd/MM/yyyy', new Date());
     const dateIsValid = formattedDate.length === 10 && isValid(date);
 
@@ -54,11 +51,9 @@ const OwnTextField = (props) => {
   };
 
   const handleOnChange = (e) => {
-    // Only if it's the date field
     if (props.type === 'tel') {
       const { formattedDate, isValid } = formatDateAndValidate(e.target.value);
       e.target.value = formattedDate;
-      // Here you can use isValid to show an error message or enable/disable submission
     }
     props.onChange(e);
   };
