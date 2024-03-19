@@ -49,6 +49,10 @@ const SingleTaskPuzzle = (props) => {
     useState(false);
   const bottomButtonRef = useRef(null);
 
+  useState(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   useEffect(() => {
     if (puzzleData.done == true) {
       if (puzzleData.last_description_text) {

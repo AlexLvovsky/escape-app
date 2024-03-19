@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { setCurrentStep } from "../store/appStore";
+import { setCurrentStep, setIsRunning } from "../store/appStore";
 import OutlineSubmitButton from "../Shared/Buttons/OutlineSubmitButton";
 import ReactPlayer from "react-player";
 import { steps, subSteps } from "../store/enum";
@@ -89,14 +89,15 @@ const SurpriseHerComponent = () => {
       {bottomButton && (
         <div className="puzzle-item-bottom-button">
           <OutlineSubmitButton
-            onClick={() =>
+            onClick={() => {
               dispatch(
                 setCurrentStep({
                   currentStep: steps.home,
                   subStep: subSteps.about_location,
                 })
-              )
-            }
+              );
+              dispatch(setIsRunning(true));
+            }}
             title={"Да! Начать игру"}
             className="w-100"
           />

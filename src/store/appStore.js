@@ -92,6 +92,10 @@ const initialState = {
   showWheel: true,
   deleteWheel: false,
   shouldUpdateStep: false,
+  isRunning: false,
+  time: 0,
+  isCompleted: false,
+  place: 1,
 };
 
 export const appStore = createSlice({
@@ -174,6 +178,18 @@ export const appStore = createSlice({
     setShouldUpdateStep: (state, action) => {
       state.shouldUpdateStep = action.payload;
     },
+    setTime: (state, action) => {
+      state.time = state.time + 1;
+    },
+    setIsRunning: (state, action) => {
+      state.isRunning = action.payload;
+    },
+    setIsCompleted: (state, action) => {
+      state.isCompleted = true;
+    },
+    setResult: (state, action) => {
+      state.place = action.payload;
+    },
   },
 });
 
@@ -195,6 +211,10 @@ export const {
   setTeemName,
   openNestedModal,
   setSubStep,
+  setTime,
+  setIsRunning,
+  setIsCompleted,
+  setResult,
 } = appStore.actions;
 
 export default appStore.reducer;

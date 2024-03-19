@@ -1,6 +1,6 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import {} from "../store/appStore";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { setResult } from "../store/appStore";
 import { steps } from "../store/enum";
 import PlayersComponent from "./PlayersComponent";
 import WelcomeTextComponent from "./WelcomeTextComponent";
@@ -20,10 +20,48 @@ import LastLocation from "./LastLocation";
 import LocationBaazar from "./LocationBaazar";
 import LocationPark from "./LocationPark";
 import LocationSchool from "./LocationSchool";
+import Timer from "../Shared/Timer/Timer";
 
 const MainAppComponent = () => {
-  const { currentStep, loader } = useSelector((state) => state);
-  console.log(lastLoccation);
+  const dispatch = useDispatch();
+  const { currentStep, loader, isRunning, isCompleted, place } = useSelector(
+    (state) => state
+  );
+
+  useEffect(() => {
+    switch (currentStep) {
+      case steps.home:
+        setTimeout(() => {
+          dispatch(setResult(2));
+        }, 600000); //10 min
+        break;
+      case steps.tennis:
+        setTimeout(() => {
+          dispatch(setResult(1));
+        }, 600000); //1 min
+        break;
+      case steps.park:
+        setTimeout(() => {
+          dispatch(setResult(3));
+        }, 300000); //5min
+        break;
+      case steps.shopping:
+        setTimeout(() => {
+          dispatch(setResult(1));
+        }, 40000); //10 sec
+        break;
+      case steps.school:
+        setTimeout(() => {
+          dispatch(setResult(2));
+        }, 300000); //5 min
+        break;
+      case steps.end:
+        setTimeout(() => {
+          dispatch(setResult(1));
+        }, 60000); //1 min
+        break;
+    }
+  }, [currentStep]);
 
   const getCurrentStep = () => {
     switch (currentStep) {
@@ -54,8 +92,12 @@ const MainAppComponent = () => {
     }
   };
   return (
-    <div className="escape-app-main-wrapper mode-dark">
-      {loader ? <LoaderLetters /> : getCurrentStep()}
+    <div className="escape-app">
+      {(isRunning || isCompleted) && <Timer />}
+
+      <div className="escape-app-main-wrapper mode-dark">
+        {loader ? <LoaderLetters /> : getCurrentStep()}
+      </div>
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { setCurrentStep } from "../store/appStore";
+import { setIsRunning, setIsCompleted } from "../store/appStore";
 import OutlineSubmitButton from "../Shared/Buttons/OutlineSubmitButton";
 import Lottie from "lottie-react";
 import lock from "../media/animations/lock.json";
@@ -49,6 +49,8 @@ const Final = (props) => {
             playIcon={<button className="play">Play</button>}
             light={<OutlineSubmitButton title="Нажмите для авторизации" />}
             onStart={() => {
+              dispatch(setIsRunning(false));
+              dispatch(setIsCompleted(true));
               setTimeout(() => {
                 setStartWriting(true);
               }, 1000);

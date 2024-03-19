@@ -2,10 +2,11 @@
 @import "~video-react/styles/scss/video-react";
 body {
   background-color: $background !important;
+  position: relative;
 }
 .escape-app-main-wrapper {
   margin: 0 auto;
-  padding: 40px 15px;
+  padding: 20px 15px;
   min-height: 100vh; // Make sure body takes 100% of the viewport height
 
   display: flex;

@@ -46,6 +46,11 @@ const MultiTaskingPuzzle = (props) => {
   const [submitPlayingLastDescription, setSubmitPlayingLastDescription] =
     useState(false);
   const bottomButtonRef = useRef(null);
+
+  useState(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   useEffect(() => {
     const lastDescription = props.data.find((puzzle) => {
       return puzzle.last_description_text !== "";
