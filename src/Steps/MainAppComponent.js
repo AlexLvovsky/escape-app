@@ -38,7 +38,7 @@ const MainAppComponent = () => {
       case steps.tennis:
         setTimeout(() => {
           dispatch(setResult(1));
-        }, 600000); //1 min
+        }, 60000); //1 min
         break;
       case steps.park:
         setTimeout(() => {
@@ -48,7 +48,7 @@ const MainAppComponent = () => {
       case steps.shopping:
         setTimeout(() => {
           dispatch(setResult(1));
-        }, 40000); //10 sec
+        }, 10000); //10 sec
         break;
       case steps.school:
         setTimeout(() => {
