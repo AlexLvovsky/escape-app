@@ -1,26 +1,26 @@
-import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { setResult } from "../store/appStore";
-import { steps } from "../store/enum";
-import PlayersComponent from "./PlayersComponent";
-import WelcomeTextComponent from "./WelcomeTextComponent";
-import WinnerDataComponent from "./WinnerDataComponent";
-import WheelComponent from "./WheelComponent";
-import LoaderLetters from "../Shared/LoaderLetters/LoaderLetters";
-import SurpriseHerComponent from "./SurpriseHerComponent";
-import { homeLocationData } from "../store/homeLocation";
-import { lastLoccation } from "../store/lastLocation";
-import { schoolLoccation } from "../store/schoolLocation";
-import { childLocation } from "../store/childLocation";
-import { courtLocation } from "../store/courtLocation";
-import { baazarLoccation } from "../store/baazarLocation";
-import LocationHome from "./LocationHome";
-import LocationTennis from "./LocationTennis";
-import LastLocation from "./LastLocation";
-import LocationBaazar from "./LocationBaazar";
-import LocationPark from "./LocationPark";
-import LocationSchool from "./LocationSchool";
-import Timer from "../Shared/Timer/Timer";
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { setResult } from '../store/appStore';
+import { steps } from '../store/enum';
+import PlayersComponent from './PlayersComponent';
+import WelcomeTextComponent from './WelcomeTextComponent';
+import WinnerDataComponent from './WinnerDataComponent';
+import WheelComponent from './WheelComponent';
+import LoaderLetters from '../Shared/LoaderLetters/LoaderLetters';
+import SurpriseHerComponent from './SurpriseHerComponent';
+import { homeLocationData } from '../store/homeLocation';
+import { lastLoccation } from '../store/lastLocation';
+import { schoolLoccation } from '../store/schoolLocation';
+import { childLocation } from '../store/childLocation';
+import { courtLocation } from '../store/courtLocation';
+import { baazarLoccation } from '../store/baazarLocation';
+import LocationHome from './LocationHome';
+import LocationTennis from './LocationTennis';
+import LastLocation from './LastLocation';
+import LocationBaazar from './LocationBaazar';
+import LocationPark from './LocationPark';
+import LocationSchool from './LocationSchool';
+import Timer from '../Shared/Timer/Timer';
 
 const MainAppComponent = () => {
   const dispatch = useDispatch();
@@ -33,7 +33,7 @@ const MainAppComponent = () => {
       case steps.home:
         setTimeout(() => {
           dispatch(setResult(2));
-        }, 600000); //10 min
+        }, 660000); //11 min
         break;
       case steps.tennis:
         setTimeout(() => {
@@ -47,18 +47,24 @@ const MainAppComponent = () => {
         break;
       case steps.shopping:
         setTimeout(() => {
-          dispatch(setResult(1));
+          dispatch(setResult(2));
         }, 10000); //10 sec
+
+        setTimeout(() => {
+          dispatch(setResult(1));
+        }, 660000); //10 sec
         break;
       case steps.school:
         setTimeout(() => {
-          dispatch(setResult(2));
+          dispatch(setResult(1));
         }, 300000); //5 min
         break;
       case steps.end:
         setTimeout(() => {
           dispatch(setResult(1));
         }, 60000); //1 min
+        break;
+      default:
         break;
     }
   }, [currentStep]);
@@ -92,10 +98,10 @@ const MainAppComponent = () => {
     }
   };
   return (
-    <div className="escape-app">
+    <div className='escape-app'>
       {(isRunning || isCompleted) && <Timer />}
 
-      <div className="escape-app-main-wrapper mode-dark">
+      <div className='escape-app-main-wrapper mode-dark'>
         {loader ? <LoaderLetters /> : getCurrentStep()}
       </div>
     </div>

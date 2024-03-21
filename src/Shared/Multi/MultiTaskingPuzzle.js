@@ -1,29 +1,29 @@
-import React, { useState, useEffect, useRef } from "react";
-import OwnTextFieldInput from "../WhiteTextField";
-import { Box } from "@mui/material";
-import { checkRightAnswer } from "../../store/appStore";
-import Lottie from "lottie-react";
-import right from "../../media/animations/right.json";
-import unlike from "../../media/animations/krestik.json";
-import help from "../../media/icons/help.svg";
-import ModalComponent from "../Modal/ModalComponent";
-import { useSelector, useDispatch } from "react-redux";
-import { openModal, openNestedModal } from "../../store/appStore";
-import { modalCauses } from "../../store/enum";
-import NestedModal from "../Modal/NestedModalComponent";
-import OutlineSubmitButton from "../../Shared/Buttons/OutlineSubmitButton";
-import Typewriter from "../../Shared/TypeWritter/TypeWritter";
-import ReactPlayer from "react-player";
-import naale from "../../media/photoAndVideo/naale.mp4";
+import React, { useState, useEffect, useRef } from 'react';
+import OwnTextFieldInput from '../WhiteTextField';
+import { Box } from '@mui/material';
+import { checkRightAnswer } from '../../store/appStore';
+import Lottie from 'lottie-react';
+import right from '../../media/animations/right.json';
+import unlike from '../../media/animations/krestik.json';
+import help from '../../media/icons/help.svg';
+import ModalComponent from '../Modal/ModalComponent';
+import { useSelector, useDispatch } from 'react-redux';
+import { openModal, openNestedModal } from '../../store/appStore';
+import { modalCauses } from '../../store/enum';
+import NestedModal from '../Modal/NestedModalComponent';
+import OutlineSubmitButton from '../../Shared/Buttons/OutlineSubmitButton';
+import Typewriter from '../../Shared/TypeWritter/TypeWritter';
+import ReactPlayer from 'react-player';
+import naale from '../../media/photoAndVideo/naale.mp4';
 
 const ClueData = (props) => {
   console.log(props);
   return (
-    <div className="clue-item-wrapper">
+    <div className='clue-item-wrapper'>
       {props.clueData.text && <div>{props.clueData.text}</div>}
       {props.clueData.filePath && (
-        <div className="puzzle-image">
-          <img src={`${props.clueData.filePath}`} alt="" />
+        <div className='puzzle-image'>
+          <img src={`${props.clueData.filePath}`} alt='' />
         </div>
       )}
     </div>
@@ -53,7 +53,7 @@ const MultiTaskingPuzzle = (props) => {
 
   useEffect(() => {
     const lastDescription = props.data.find((puzzle) => {
-      return puzzle.last_description_text !== "";
+      return puzzle.last_description_text !== '';
     });
     if (!lastDescription) {
       setBottomButton(true);
@@ -74,7 +74,7 @@ const MultiTaskingPuzzle = (props) => {
       } else {
         setBottomButton(true);
       }
-      console.log("all puzzles are completed");
+      console.log('all puzzles are completed');
     }
   }, [puzzleData]);
   useEffect(() => {
@@ -87,7 +87,7 @@ const MultiTaskingPuzzle = (props) => {
 
       window.scrollTo({
         top: targetPosition,
-        behavior: "smooth",
+        behavior: 'smooth',
       });
     }
   }, [bottomButton]);
@@ -161,7 +161,7 @@ const MultiTaskingPuzzle = (props) => {
     if (rightAnswers) {
       return rightAnswers.rightAnswer[0];
     }
-    return "";
+    return '';
   };
   const handleAddIcon = (id) => {
     setShowIncorrectAnswer((prevArray) => [...prevArray, id]);
@@ -169,17 +169,17 @@ const MultiTaskingPuzzle = (props) => {
 
   const renderItem = (puzzle) => {
     return (
-      <div className="puzzle-item">
-        <div className="puzzle-data">
+      <div className='puzzle-item'>
+        <div className='puzzle-data'>
           {puzzle.puzzleText && (
             <div
-              className="puzzle-text left"
+              className='puzzle-text left'
               dangerouslySetInnerHTML={{ __html: puzzle.puzzleText }}
             />
           )}
           {puzzle.puzzleFilePath && (
-            <div className="puzzle-image">
-              <img src={`${puzzle.puzzleFilePath}`} alt="" />
+            <div className='puzzle-image'>
+              <img src={`${puzzle.puzzleFilePath}`} alt='' />
             </div>
           )}
           <Box
@@ -187,23 +187,23 @@ const MultiTaskingPuzzle = (props) => {
             onSubmit={(event) => {
               event.preventDefault();
             }}
-            component="form"
+            component='form'
             sx={{
-              "& .MuiTextField-root": { m: 1, width: "320px" },
+              '& .MuiTextField-root': { m: 1, width: '320px' },
             }}
-            autoComplete="off"
+            autoComplete='off'
           >
-            <div className="answer-input-wrapper">
-              <div className="clues-wrapper">
-                <div className="" onClick={() => helpRequest(puzzle.id)}>
+            <div className='answer-input-wrapper'>
+              <div className='clues-wrapper'>
+                <div className='' onClick={() => helpRequest(puzzle.id)}>
                   <img src={help} />
                 </div>
               </div>
-              <div className="answer-form">
+              <div className='answer-form'>
                 <OwnTextFieldInput
-                  id="outlined-basic"
-                  label={"Ваш ответ"}
-                  variant="outlined"
+                  id='outlined-basic'
+                  label={'Ваш ответ'}
+                  variant='outlined'
                   onChange={(e) => {
                     onInputChange(e.target.value, puzzle.id);
                   }}
@@ -211,19 +211,19 @@ const MultiTaskingPuzzle = (props) => {
                 />
                 {!puzzle.done && (
                   <OutlineSubmitButton
-                    title="Проверить"
-                    className="small"
+                    title='Проверить'
+                    className='small'
                     onClick={() => handleAddIcon(puzzle.id)}
                   />
                 )}
               </div>
               {puzzle.done && (
-                <div className="right-answer-animation">
+                <div className='right-answer-animation'>
                   <Lottie animationData={right} />
                 </div>
               )}
               {showIncorrectAnswer.includes(puzzle.id) && (
-                <div className="right-answer-animation">
+                <div className='right-answer-animation'>
                   <Lottie animationData={unlike} />
                 </div>
               )}
@@ -238,34 +238,34 @@ const MultiTaskingPuzzle = (props) => {
   };
 
   return (
-    <div className="puzzle-wrapper">
+    <div className='puzzle-wrapper'>
       {puzzleData.map((puzzle, index) => {
         return (
           <div>
             <div key={index}>{renderItem(puzzle)}</div>
-            <div className="border"></div>
+            <div className='border'></div>
           </div>
         );
       })}
       {submitPlayingLastDescription && (
-        <div className="last-description">
+        <div className='last-description'>
           <>
             {startWritingLastDescription && (
-              <div className="text">
+              <div className='text'>
                 <Typewriter text={lastDescription.text} delay={75} />
               </div>
             )}
             <ReactPlayer
               url={lastDescription.audio}
-              width="100%"
-              height="1px"
+              width='100%'
+              height='1px'
               controls={false}
               playing={true}
               muted={false}
-              type="audio/mp3"
+              type='audio/mp3'
               volume={1}
-              playIcon={<button className="play">Play</button>}
-              light={<OutlineSubmitButton title="Далее" />}
+              playIcon={<button className='play'>Play</button>}
+              light={<OutlineSubmitButton title='Далее' />}
               onStart={() => {
                 setTimeout(() => {
                   setStartWritingLastDescription(true);
@@ -282,11 +282,11 @@ const MultiTaskingPuzzle = (props) => {
       )}
       <div ref={bottomButtonRef}>
         {bottomButton && (
-          <div className="puzzle-item-bottom-button">
+          <div className='puzzle-item-bottom-button'>
             <OutlineSubmitButton
               onClick={props.onBottomButtonClick}
               title={props.bottomButtonText}
-              className="w-100"
+              className='w-100'
             />
           </div>
         )}
@@ -296,27 +296,27 @@ const MultiTaskingPuzzle = (props) => {
         <ModalComponent
           open={modal}
           handleClose={closeModal}
-          title={"Вы уверены, что хотите видеть подсказку?"}
+          title={'Вы уверены, что хотите видеть подсказку?'}
           cause={modalCauses.info}
           button={true}
           extraButton={true}
           onButtonClick={openClueData}
-          buttonText={"Да"}
+          buttonText={'Да'}
           onExtraButtonClick={closeModal}
-          extraButtonText={"Нет"}
+          extraButtonText={'Нет'}
         />
       )}
       {nestedModal && (
         <NestedModal
           open={nestedModal}
           handleClose={closeNestedModal}
-          parentTitle={"Подсказки закончились. Показать правильный ответ?"}
+          parentTitle={'Подсказки закончились. Показать правильный ответ?'}
           //parentText={"parentText"}
           childTitle={getRightAnswer()}
           //childText={"childText"}
-          closeChildModalButtonText={"OK"}
-          openChildModalButtonText={"Да"}
-          closeParentModalButtonText={"Нет"}
+          closeChildModalButtonText={'OK'}
+          openChildModalButtonText={'Да'}
+          closeParentModalButtonText={'Нет'}
         />
       )}
     </div>
