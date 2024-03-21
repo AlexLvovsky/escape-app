@@ -52,7 +52,7 @@ const MainAppComponent = () => {
 
         setTimeout(() => {
           dispatch(setResult(1));
-        }, 660000); //10 sec
+        }, 660000); //11 min
         break;
       case steps.school:
         setTimeout(() => {
